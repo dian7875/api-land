@@ -1,0 +1,38 @@
+.Logo{
+    width: 30%;
+    height: auto;
+}
+
+
+.sidebar{
+    background-color: aqua;
+    height: 100vh;
+  width: 15%;
+}
+
+.Servicios{
+    background-color: bisque;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: grid;
+    grid-template-areas:
+    desplegable,
+    imagen,
+    nombre,
+    descripcion,
+    botones;
+}
+
+body{
+    display: flex;
+    gap: 1%;
+}
+
+.btnpantalla{
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+}
