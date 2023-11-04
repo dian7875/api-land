@@ -16,7 +16,7 @@ import { InfoGeneralModule } from './info-general/info-general.module';
         password:'root',
         database:'companyryc',
         autoLoadEntities: true,
-        synchronize: false
+        synchronize: true
       }),
 
       ServicesModule,
