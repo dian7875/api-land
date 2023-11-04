@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ServicesModule } from './services/services.module';
 
 @Module({
   imports: [
@@ -13,8 +14,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         password:'root',
         database:'CompanyRYC',
         autoLoadEntities: true,
-        synchronize: true
+        synchronize: false
       }),
+      ServicesModule,
     ],
   controllers: [AppController],
   providers: [AppService],
