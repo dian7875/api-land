@@ -1,61 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>RYC pagina administrativa</title>
 </head>
-<body>
-<div class="sidebar">
-<img class="Logo" src="/assets/RYCLOG.png " alt="">
-<span>
-<h2>Informacion Genral</h2>
-<ul class="subMenu">
-   <li><button type="button">Editar</button></li> 
-</ul>
-</span>
-<span>
-<h2>Servicios</h2>
-<ul class="subMenu">
-    <li><button type="button">Agregar</button></li>
-    <li><button type="button">Editar</button></li>
-    <li><button type="button">Eliminar</button></li>
-</ul>
-</span>
-<span>
-  <h2>Geleria</h2>
-    <ul class="subMenu">
-        <li><button>Agregar</button></li>
-        <li><button>Editar</button></li>
-        <li><button>Eliminar</button></li>
-    </ul>
-</span>
-    </div>
 
-    <div class="Servicios">
+<body>
+    <div class="sidebar">
+        <img class="Logo" src="/assets/RYCLOG.png " alt="">
+        <span>
+            <h2>Informacion Genral</h2>
+            <ul class="subMenu">
+                <li><button type="button">Editar</button></li>
+            </ul>
+        </span>
+        <span>
+            <h2>Servicios</h2>
+            <ul class="subMenu">
+                <li><button type="button">Agregar</button></li>
+                <li><button type="button">Editar</button></li>
+                <li><button type="button">Eliminar</button></li>
+            </ul>
+        </span>
+        <span>
+            <h2>Geleria</h2>
+            <ul class="subMenu">
+                <li><button type="button">Agregar</button></li>
+                <li><button type="button">Editar</button></li>
+                <li><button type="button">Eliminar</button></li>
+            </ul>
+        </span>
+    </div>
+<div id="container">
+    <div id="Servicios-Edit">
 
         <div class="desplegable">
-            <p>desplegable</p>
+            <input type="text" placeholder="Servicios">
         </div>
         <div class="Imagen">
-            <p>poner Imagen</p>
-            <input placeholder="Digite la URL de la imagen" type="text">
+           <img id="imagenPrev" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvSEkXfDBUeTsoFwQsdlz8gWETRWPT3O4wHA&usqp=CAU" alt="">
+            <div>
+                <input placeholder="URL de la imagen" type="text">
+            </div>
         </div>
         <div class="nombre">
-            <p>nombre</p>
+            <p>Nombre del Servicio</p>
+            <input placeholder="Nombre Servicio" type="text">
         </div>
         <div class="descripcion">
             <p>descripcion</p>
+            <textarea name="ServiceDesc" id="" cols="30" rows="10" placeholder="Descripcion del Servicio"></textarea>
         </div>
         <div class="btnpantalla">
-        <button>Agregar</button>
-        <button>cancelar</button>
+            <button type="submit">Agregar</button>
+            <button type="submit">cancelar</button>
         </div>
     </div>
-
-
+</div>
 
 </body>
 <script src="main.js"></script>
+
 </html>

@@ -1,37 +1,31 @@
-.Logo{
+.Logo {
     width: 30%;
     height: auto;
 }
 
 
-.sidebar{
+.sidebar {
     background-color: aqua;
     height: 100vh;
-  width: 15%;
+    width: 15%;
 }
 
-.Servicios{
-    background-color: bisque;
-    width: 90%;
+#container {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    display: grid;
-    grid-template-areas:
-    desplegable,
-    imagen,
-    nombre,
-    descripcion,
-    botones;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
-body{
+body {
     display: flex;
     gap: 1%;
 }
 
-.btnpantalla{
+.btnpantalla {
     display: flex;
     flex-direction: row;
     gap: 15%;
