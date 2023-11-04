@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ServicesModule } from './services/services.module';
 import { InfoGeneralModule } from './info-general/info-general.module';
+
 
 @Module({
   imports: [
@@ -14,9 +16,12 @@ import { InfoGeneralModule } from './info-general/info-general.module';
         password:'root',
         database:'companyryc',
         autoLoadEntities: true,
-        synchronize: true
+        synchronize: false
       }),
-      InfoGeneralModule,
+
+      ServicesModule,
+      InfoGeneralModule
+
     ],
   controllers: [AppController],
   providers: [AppService],
