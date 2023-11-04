@@ -21,7 +21,7 @@ export class InfoGeneralService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} infoGeneral`;
+    return this.infoRepository.findOneBy({id});
   }
 
   update(id: number, updateInfoGeneralDto: UpdateInfoGeneralDto) {
