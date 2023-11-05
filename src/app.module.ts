@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ServicesModule } from './services/services.module';
 import { InfoGeneralModule } from './info-general/info-general.module';
+
 
 @Module({
   imports: [
@@ -16,7 +18,10 @@ import { InfoGeneralModule } from './info-general/info-general.module';
         autoLoadEntities: true,
         synchronize: true
       }),
-      InfoGeneralModule,
+
+      ServicesModule,
+      InfoGeneralModule
+
     ],
   controllers: [AppController],
   providers: [AppService],
