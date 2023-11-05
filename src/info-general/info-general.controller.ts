@@ -31,7 +31,8 @@ export class InfoGeneralController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.infoGeneralService.remove(+id);
+    return this.infoGeneralService.remove(+id)
+    
   }
   
 }

@@ -36,6 +36,7 @@ export class InfoGeneralService {
 
   remove(id: number) {
     return this.infoRepository.delete(id);
+    
   }
   
 }
