@@ -6,12 +6,12 @@ import { UpdateInfoGeneralDto } from './dto/update-info-general.dto';
 @Controller('info-general')
 export class InfoGeneralController {
   constructor(private readonly infoGeneralService: InfoGeneralService) {}
-/*
+
   @Post()
   create(@Body() createInfoGeneralDto: CreateInfoGeneralDto) {
     return this.infoGeneralService.create(createInfoGeneralDto);
   }
-*/
+
   @Get()
   findAll() {
     return this.infoGeneralService.findAll();
@@ -31,4 +31,5 @@ export class InfoGeneralController {
   remove(@Param('id') id: string) {
     return this.infoGeneralService.remove(+id);
   }
+  
 }
