@@ -1,3 +1,5 @@
+
+
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { InfoGeneralService } from './info-general.service';
 import { CreateInfoGeneralDto } from './dto/create-info-general.dto';
@@ -29,7 +31,8 @@ export class InfoGeneralController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.infoGeneralService.remove(+id);
+    return this.infoGeneralService.remove(+id)
+    
   }
   
 }

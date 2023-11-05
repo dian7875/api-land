@@ -1,3 +1,5 @@
+
+
 import { Injectable } from '@nestjs/common';
 import { CreateInfoGeneralDto } from './dto/create-info-general.dto';
 import { UpdateInfoGeneralDto } from './dto/update-info-general.dto';
@@ -34,6 +36,7 @@ export class InfoGeneralService {
 
   remove(id: number) {
     return this.infoRepository.delete(id);
+    
   }
   
 }
