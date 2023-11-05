@@ -1,32 +1,68 @@
+body {
+   height: 100%;
+   display: flex;
+   margin: 0;
+}
+.sidebar {
+    background-color: rgb(23, 214, 214);
+    width: 20%;
+    height: 100%;
+    position: absolute;
+}
 .Logo {
-    width: 30%;
+    width: 50%;
     height: auto;
 }
-
-
-.sidebar {
-    background-color: aqua;
-    height: 100vh;
-    width: 15%;
-}
-
 #container {
+    position:relative;
+    margin-left: 20%;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap: 10px;
     align-items: center;
     justify-content: center;
 }
-
-body {
+.InfoService{
+    width: 100%;
     display: flex;
-    gap: 1%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
-.btnpantalla {
+.btn {
     display: flex;
-    flex-direction: row;
-    gap: 15%;
+    justify-content: space-around;
+}
+#Servicios-Create{
+   visibility: hidden;
+    width: 40%;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#Servicios-Edit{
+   visibility: hidden;
+    width: 40%;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#Servicios-Delete{
+  visibility: hidden;
+    width: 40%;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.ComboService{
+    position: absolute;
+    top: 20px;
+    visibility: hidden;
 }

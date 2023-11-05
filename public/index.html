@@ -10,9 +10,9 @@
 
 <body>
     <div class="sidebar">
-        <img class="Logo" src="/assets/RYCLOG.png " alt="">
+        <img class="Logo" src="./assets/RYCLOG.png" alt="">
         <span>
-            <h2>Informacion Genral</h2>
+            <h2>Informacion General</h2>
             <ul class="subMenu">
                 <li><button type="button">Editar</button></li>
             </ul>
@@ -20,7 +20,7 @@
         <span>
             <h2>Servicios</h2>
             <ul class="subMenu">
-                <li><button type="button">Agregar</button></li>
+                <li><button type="button" id="AgregarServ">Agregar</button></li>
                 <li><button type="button">Editar</button></li>
                 <li><button type="button">Eliminar</button></li>
             </ul>
@@ -34,32 +34,55 @@
             </ul>
         </span>
     </div>
-<div id="container">
-    <div id="Servicios-Edit">
 
-        <div class="desplegable">
-            <input type="text" placeholder="Servicios">
-        </div>
-        <div class="Imagen">
-           <img id="imagenPrev" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvSEkXfDBUeTsoFwQsdlz8gWETRWPT3O4wHA&usqp=CAU" alt="">
-            <div>
-                <input placeholder="URL de la imagen" type="text">
+    <div id="container">
+        <span class="ComboService">
+            <input id="IDService" type="text" placeholder="Servicios">
+        </span>
+        <span id="Servicios-Create">
+            <span class="InfoService">
+                <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
+                <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
+                <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
+                <p>Descripcion del servicio</p>
+                <textarea name="ServiceDesc" id="" cols="30" rows="10"
+                    placeholder="Descripcion del Servicio"></textarea>
+            </span>
+            <div class="btn">
+                <button type="submit">Agregar</button>
+                <button type="submit">cancelar</button>
             </div>
-        </div>
-        <div class="nombre">
-            <p>Nombre del Servicio</p>
-            <input placeholder="Nombre Servicio" type="text">
-        </div>
-        <div class="descripcion">
-            <p>descripcion</p>
-            <textarea name="ServiceDesc" id="" cols="30" rows="10" placeholder="Descripcion del Servicio"></textarea>
-        </div>
-        <div class="btnpantalla">
-            <button type="submit">Agregar</button>
-            <button type="submit">cancelar</button>
-        </div>
+        </span>
+        <span id="Servicios-Edit">
+            <span class="InfoService">
+                <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
+                <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
+                <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
+                <p>Descripcion del servicio</p>
+                <textarea name="ServiceDesc" id="" cols="30" rows="10"
+                    placeholder="Descripcion del Servicio"></textarea>
+            </span>
+            <div class="btn">
+                <button type="submit">Agregar</button>
+                <button type="submit">cancelar</button>
+            </div>
+        </span>
+        <span id="Servicios-Delete">
+            <span class="InfoService">
+                <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
+                <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
+                <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
+                <p>Descripcion del servicio</p>
+                <textarea name="ServiceDesc" id="" cols="30" rows="10"
+                    placeholder="Descripcion del Servicio"></textarea>
+            </span>
+            <div class="btn">
+                <button type="submit">Eliminar</button>
+                <button type="submit">cancelar</button>
+            </div>
+        </span>
+
     </div>
-</div>
 
 </body>
 <script src="main.js"></script>
