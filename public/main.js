@@ -10,44 +10,65 @@ let AddImg = this.document.getElementById("AgregarIMG");
 let DelImg = this.document.getElementById("EliminarIMG");
 let EdiImg = this.document.getElementById("EditarIMG");
 let EdiInf = this.document.getElementById("InfEdit");
-function editSer(){
-  document.getElementById("Servicios-Edit").style.visibility = "visible";
-  document.getElementById("IDService").style.visibility = "visible";
-  document.getElementById("Servicios-Delete").style.visibility = "hidden";
-  document.getElementById("Servicios-Create").style.visibility = "hidden";
+var scrImgLog = document.getElementById("LogoI");
+var ImgLog = document.getElementById("Logop");
+var ImgBAN = document.getElementById("LogoB");
+var scrBAN = document.getElementById("BanIn");
+let SD = document.getElementById("Servicios-Delete")
+let SE = document.getElementById("Servicios-Edit")
+let SC = document.getElementById("Servicios-Create")
+let ListSe = document.getElementById("IDService")
+let InfoGenDsi = document.getElementById("ActionInfo");
+
+function EditInf(){
+  InfoGenDsi.style.visibility="visible";
 }
-function createServ(){
-  document.getElementById("Servicios-Create").style.visibility = "visible";
-  document.getElementById("Servicios-Delete").style.visibility = "hidden";
-  document.getElementById("Servicios-Edit").style.visibility = "hidden";
-  document.getElementById("IDService").style.visibility = "hidden";
+function hiddenInf(){
+  InfoGenDsi.style.visibility="hidden";
 }
-function deleteServ(){
-  document.getElementById("Servicios-Delete").style.visibility = "visible";
-  document.getElementById("Servicios-Edit").style.visibility = "hidden";
-  document.getElementById("Servicios-Create").style.visibility = "hidden";
-  document.getElementById("IDService").style.visibility = "visible";
+
+function editSer() {
+  SE.style.visibility = "visible";
+  ListSe.style.visibility = "visible";
+  SD.style.visibility = "hidden";
+  SC.style.visibility = "hidden";
 }
-function cancel(){
-  document.getElementById("Servicios-Delete").style.visibility = "hidden";
-  document.getElementById("Servicios-Edit").style.visibility = "hidden";
-  document.getElementById("Servicios-Create").style.visibility = "hidden";
-  document.getElementById("IDService").style.visibility = "hidden";
+function createServ() {
+  SC.style.visibility = "visible";
+  SD.style.visibility = "hidden";
+  SE.style.visibility = "hidden";
+  ListSe.style.visibility = "hidden";
 }
-function hiddenServ(){
-  document.getElementById("Servicios-Delete").style.visibility = "hidden";
-  document.getElementById("Servicios-Edit").style.visibility = "hidden";
-  document.getElementById("Servicios-Create").style.visibility = "hidden";
-  document.getElementById("IDService").style.visibility = "hidden";
+function deleteServ() {
+  SD.style.visibility = "visible";
+  SE.style.visibility = "hidden";
+  SC.style.visibility = "hidden";
+  ListSe.style.visibility = "visible";
+}
+function cancel() {
+  SD.style.visibility = "hidden";
+  SE.style.visibility = "hidden";
+  SC.style.visibility = "hidden";
+  ListSe.style.visibility = "hidden";
+  InfoGenDsi.style.visibility="hidden";
+}
+function hiddenServ() {
+  SD.style.visibility = "hidden";
+  SE.style.visibility = "hidden";
+  SC.style.visibility = "hidden";
+  ListSe.style.visibility = "hidden";
 }
 edit.addEventListener("click", function () {
   editSer();
+  hiddenInf();
 })
 create.addEventListener("click", function () {
   createServ();
+  hiddenInf();
 })
 del.addEventListener("click", function () {
   deleteServ();
+  hiddenInf();
 })
 
 for (var i = 0; i < cancels.length; i++) {
@@ -57,13 +78,25 @@ for (var i = 0; i < cancels.length; i++) {
 }
 AddImg.addEventListener("click", function () {
   hiddenServ();
+  hiddenInf();
 })
 EdiImg.addEventListener("click", function () {
   hiddenServ();
+  hiddenInf();
 })
 DelImg.addEventListener("click", function () {
   hiddenServ();
+  hiddenInf();
 })
 EdiInf.addEventListener("click", function () {
   hiddenServ();
+  EditInf();
 })
+scrImgLog.addEventListener("input", function () {
+  const nuevoSrc = scrImgLog.value;
+  ImgLog.src = nuevoSrc;
+});
+scrBAN.addEventListener("input", function () {
+  const nuevoSrc = scrBAN.value;
+  ImgBAN.src = nuevoSrc;
+});

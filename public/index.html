@@ -37,18 +37,37 @@
 
     <div id="container">
         <span id="ActionInfo">
-            <span>
-                <input type="text" placeholder="Nombre de la compañia">
-                <input type="text" placeholder="URL Logo">
-                <input type="text" placeholder="Descripcion">
-                <input type="text" placeholder="URL Banner">
-                <input type="text" placeholder="Tel1">
-                <input type="text" placeholder="Tel2">
-                <input type="text" placeholder="History">
-                <input type="text" placeholder="Direccion">
-                <input type="text" placeholder="Correo">
+            <span id="Informacion">
+                <div class="InIMG">
+                    <div class="InfoED">
+                        <p>Url Logo:<input id="LogoI" placeholder="URL de la imagen" type="text"></p>
+                        <img id="Logop" class="Im" src="https://pbs.twimg.com/media/F6BDHrNWMAIUUGc?format=jpg&name=large" alt=""
+                            width="190px" height="190px">
+                    </div>
+                    <div>
+                        <p>Url Banner:<input id="BanIn" placeholder="URL de la imagen" type="text"></p>
+                        <img id="LogoB" class="Im" src="https://pbs.twimg.com/media/F6BDHrNWMAIUUGc?format=jpg&name=large" alt=""width="190px" height="190px">
+                    </div>
+                </div>
+                <div class="InfoED">
+                    <p>Nombre de la compañia: <input type="text" placeholder="Nombre de la compañia"></p>
+                    <p class="P">Descripcion:</p>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Descripcion"></textarea>
+                    <p class="P">Historia:</p>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Historia"></textarea>
+                </div>
+                <div class="InfoED">
+                    <p>Telefono: <input type="text" placeholder="Tel1"></p>
+                    <p>Telefono 2: <input type="text" placeholder="Tel2"></p>
+                    <p>Historia: <input type="text" placeholder="History"></p>
+                    <p>Direccion: <input type="text" placeholder="Direccion"></p>
+                    <p>Correo: <input type="text" placeholder="Correo"></p>
+                </div>
             </span>
-
+            <div class="btn">
+                <button type="submit" id="Confirm">Confirmar</button>
+                <button type="submit" class="cancelar">cancelar</button>
+            </div>
 
         </span>
         <span id="ServiceAction">
@@ -100,10 +119,11 @@
 
 
         </span>
-        
+
 
     </div>
 
 </body>
 <script src="main.js"></script>
+
 </html>
