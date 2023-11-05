@@ -1,3 +1,5 @@
+
+
 import { Injectable } from '@nestjs/common';
 import { CreateInfoGeneralDto } from './dto/create-info-general.dto';
 import { UpdateInfoGeneralDto } from './dto/update-info-general.dto';
@@ -8,13 +10,16 @@ import { InfoGeneral } from './entities/info-general.entity';
 @Injectable()
 export class InfoGeneralService {
 
+
   constructor(@InjectRepository(InfoGeneral)
   private infoRepository: Repository<InfoGeneral>
   ){}
-/*
+
   create(createInfoGeneralDto: CreateInfoGeneralDto) {
-    return 'This action adds a new infoGeneral';
-  }*/
+    var addedInfo = this.infoRepository.create(createInfoGeneralDto);
+    this.infoRepository.save(addedInfo);
+    return addedInfo;
+  }
 
   findAll() {
     return this.infoRepository.find();
@@ -24,11 +29,14 @@ export class InfoGeneralService {
     return this.infoRepository.findOneBy({id});
   }
 
-  update(id: number, updateInfoGeneralDto: UpdateInfoGeneralDto) {
-    return `This action updates a #${id} infoGeneral`;
+  async update(id: number, updateInfoGeneralDto: UpdateInfoGeneralDto) {
+    var updateInfo = await this.infoRepository.update({id},updateInfoGeneralDto);
+    return updateInfo;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} infoGeneral`;
+    return this.infoRepository.delete(id);
+    
   }
+  
 }
