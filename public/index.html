@@ -14,73 +14,93 @@
         <span>
             <h2>Informacion General</h2>
             <ul class="subMenu">
-                <li><button type="button">Editar</button></li>
+                <li><button type="button" id="InfEdit">Editar</button></li>
             </ul>
         </span>
         <span>
             <h2>Servicios</h2>
             <ul class="subMenu">
                 <li><button type="button" id="AgregarServ">Agregar</button></li>
-                <li><button type="button">Editar</button></li>
-                <li><button type="button">Eliminar</button></li>
+                <li><button type="button" id="EditarServ">Editar</button></li>
+                <li><button type="button" id="EliminarServ">Eliminar</button></li>
             </ul>
         </span>
         <span>
             <h2>Geleria</h2>
             <ul class="subMenu">
-                <li><button type="button">Agregar</button></li>
-                <li><button type="button">Editar</button></li>
-                <li><button type="button">Eliminar</button></li>
+                <li><button type="button" id="AgregarIMG">Agregar</button></li>
+                <li><button type="button" id="EditarIMG">Editar</button></li>
+                <li><button type="button" id="EliminarIMG">Eliminar</button></li>
             </ul>
         </span>
     </div>
 
     <div id="container">
-        <span class="ComboService">
-            <input id="IDService" type="text" placeholder="Servicios">
-        </span>
-        <span id="Servicios-Create">
-            <span class="InfoService">
-                <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
-                <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
-                <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
-                <p>Descripcion del servicio</p>
-                <textarea name="ServiceDesc" id="" cols="30" rows="10"
-                    placeholder="Descripcion del Servicio"></textarea>
+        <span id="ActionInfo">
+            <span>
+                <input type="text" placeholder="Nombre de la compañia">
+                <input type="text" placeholder="URL Logo">
+                <input type="text" placeholder="Descripcion">
+                <input type="text" placeholder="URL Banner">
+                <input type="text" placeholder="Tel1">
+                <input type="text" placeholder="Tel2">
+                <input type="text" placeholder="History">
+                <input type="text" placeholder="Direccion">
+                <input type="text" placeholder="Correo">
             </span>
-            <div class="btn">
-                <button type="submit">Agregar</button>
-                <button type="submit">cancelar</button>
-            </div>
+
+
         </span>
-        <span id="Servicios-Edit">
-            <span class="InfoService">
-                <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
-                <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
-                <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
-                <p>Descripcion del servicio</p>
-                <textarea name="ServiceDesc" id="" cols="30" rows="10"
-                    placeholder="Descripcion del Servicio"></textarea>
+        <span id="ServiceAction">
+            <span class="ComboService">
+                <input id="IDService" type="text" placeholder="Servicios">
             </span>
-            <div class="btn">
-                <button type="submit">Agregar</button>
-                <button type="submit">cancelar</button>
-            </div>
-        </span>
-        <span id="Servicios-Delete">
-            <span class="InfoService">
-                <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
-                <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
-                <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
-                <p>Descripcion del servicio</p>
-                <textarea name="ServiceDesc" id="" cols="30" rows="10"
-                    placeholder="Descripcion del Servicio"></textarea>
+            <span id="Servicios-Create">
+                <span class="InfoService">
+                    <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
+                    <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
+                    <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
+                    <p>Descripcion del servicio</p>
+                    <textarea name="ServiceDesc" id="" cols="30" rows="10"
+                        placeholder="Descripcion del Servicio"></textarea>
+                </span>
+                <div class="btn">
+                    <button type="submit" id="CreateService">Agregar</button>
+                    <button type="submit" class="cancelar">cancelar</button>
+                </div>
             </span>
-            <div class="btn">
-                <button type="submit">Eliminar</button>
-                <button type="submit">cancelar</button>
-            </div>
+            <span id="Servicios-Edit">
+                <span class="InfoService">
+                    <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
+                    <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
+                    <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
+                    <p>Descripcion del servicio</p>
+                    <textarea name="ServiceDesc" id="" cols="30" rows="10"
+                        placeholder="Descripcion del Servicio"></textarea>
+                </span>
+                <div class="btn">
+                    <button type="submit" id="EditService">Editar</button>
+                    <button type="submit" class="cancelar">cancelar</button>
+                </div>
+            </span>
+            <span id="Servicios-Delete">
+                <span class="InfoService">
+                    <p>Nombre del Servicio: <input placeholder="Nombre Servicio" type="text"> </p>
+                    <p>URL IMAGEN: <input placeholder="URL de la imagen" type="text"></p>
+                    <img id="imagenPrev" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
+                    <p>Descripcion del servicio</p>
+                    <textarea name="ServiceDesc" id="" cols="30" rows="10"
+                        placeholder="Descripcion del Servicio"></textarea>
+                </span>
+                <div class="btn">
+                    <button type="submit" id="DeleteService">Eliminar</button>
+                    <button type="submit" class="cancelar">cancelar</button>
+                </div>
+            </span>
+
+
         </span>
+        
 
     </div>
 
