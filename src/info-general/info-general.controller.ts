@@ -5,7 +5,7 @@ import { InfoGeneralService } from './info-general.service';
 import { CreateInfoGeneralDto } from './dto/create-info-general.dto';
 import { UpdateInfoGeneralDto } from './dto/update-info-general.dto';
 
-@Controller('info-general')
+@Controller('api/infogeneral')
 export class InfoGeneralController {
   constructor(private readonly infoGeneralService: InfoGeneralService) {}
 

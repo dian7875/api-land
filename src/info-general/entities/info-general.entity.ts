@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Galery } from "src/galery/entities/galery.entity";
+import { Service } from "src/services/entities/service.entity";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('infogeneral')
 export class InfoGeneral {
@@ -31,4 +33,11 @@ export class InfoGeneral {
     
     @Column()
     history: string;
+
+    @OneToMany(() => Service, services=> services.InfoGeneral)
+    services: Service[];
+    
+    @OneToOne(() => Galery)
+    @JoinColumn()
+    galery: Galery
 }

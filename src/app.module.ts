@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServicesModule } from './services/services.module';
 import { InfoGeneralModule } from './info-general/info-general.module';
+import { GaleryModule } from './galery/galery.module';
+import { PhotosModule } from './photos/photos.module';
 
 
 @Module({
@@ -20,7 +22,9 @@ import { InfoGeneralModule } from './info-general/info-general.module';
       }),
 
       ServicesModule,
-      InfoGeneralModule
+      InfoGeneralModule,
+      GaleryModule,
+      PhotosModule
 
     ],
   controllers: [AppController],

@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn
+import { InfoGeneral } from "src/info-general/entities/info-general.entity";
+import {Column, Entity, ManyToOne, PrimaryGeneratedColumn
 }from "typeorm";
 
 @Entity('services')
@@ -14,4 +15,9 @@ export class Service {
 
     @Column()
     icon: string;
+    @Column()
+    infoGeneralId:number;
+
+    @ManyToOne(() => InfoGeneral, InfoGeneral=> InfoGeneral.services)
+    InfoGeneral: InfoGeneral;
 }
