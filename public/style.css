@@ -11,7 +11,7 @@ body {
     position: absolute;
 }
 
-.Logo {
+#Logo {
     width: 50%;
     height: auto;
 }
@@ -51,7 +51,15 @@ body {
     justify-content: center;
     align-items: center;
 }
-#ActionInfo{
+.btn {
+    display: flex;
+    justify-content: space-around;
+}
+#Canc{
+    width: 80%;
+    margin-left: 20px;
+}
+#ActionInfo {
     visibility: hidden;
     position: absolute;
     top: 25px;
@@ -59,11 +67,33 @@ body {
     flex-direction: column;
     gap: 40px;
 }
-.btn {
-    display: flex;
-    justify-content: space-around;
+
+.botonera {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+#CreateService {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 80%;
+    margin-left: 20px;
 }
 
+#DeleteService {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 80%;
+    margin-left: 20px;
+}
+
+#EditService {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 80%;
+    margin-left: 20px;
+
+}
 #ServiceAction {
     position: absolute;
     width: 100%;
@@ -73,27 +103,7 @@ body {
     justify-content: center;
 }
 
-#Servicios-Create {
-    visibility: hidden;
-    width: 40%;
-    position: absolute;
-    top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#Servicios-Edit {
-    visibility: hidden;
-    width: 40%;
-    position: absolute;
-    top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#Servicios-Delete {
+#Servicios{
     visibility: hidden;
     width: 40%;
     position: absolute;
@@ -107,4 +117,47 @@ body {
     position: absolute;
     top: 20px;
     visibility: hidden;
+}
+
+.ComboGalery {
+    visibility: hidden;
+    position: absolute;
+    top: 20px;
+}
+
+#GalleryAction {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#galleryInf{
+    visibility: hidden;
+    width: 40%;
+    position: absolute;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#CreateIMG{
+     grid-column: 1/2;
+    grid-row: 1/2;
+    width: 80%;
+    margin-left: 20px;
+}
+#DeleteIMG{
+     grid-column: 1/2;
+    grid-row: 1/2;
+    width: 80%;
+    margin-left: 20px;
+}
+#EditIMG{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 80%;
+    margin-left: 20px;
 }
