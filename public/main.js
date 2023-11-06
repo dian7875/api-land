@@ -1,6 +1,72 @@
 window.addEventListener("load", function (event) {
   console.log("'Todos los recursos terminaron de cargar!");
+
+
 });
+
+
+// Inicio del update informacion genereal en el html//
+document.getElementById("Confirm").addEventListener("click", function() {
+  // Obtén los valores de los campos de entrada que deseas actualizar
+  var newLogo = document.getElementById("LogoI").value;
+  var newBanner = document.getElementById("BanIn").value;
+  var newCompanyName = document.getElementById("NameC").value;
+  var newDescription = document.getElementById("DescC").value;
+  var newHistory = document.getElementById("HistC").value;
+  var newPhone = document.getElementById("TelC").value;
+  var newPhone2 = document.getElementById("Tel2C").value;
+  var newDirection = document.getElementById("DirC").value;
+  var newEmail = document.getElementById("MailC").value;
+
+  // Crea un objeto que contenga los datos que deseas actualizar
+  var updatedData = {
+    logo: newLogo,
+    companyName: newCompanyName,
+    description: newDescription,
+    imgDescription: newBanner,
+    correo: newEmail,
+    tel: newPhone,
+    tel2: newPhone2,
+    direction: newDirection,
+    history: newHistory
+  };
+
+  
+  var infoId = 1; // variable por si cambiaramos la id del elemento en la db
+
+ 
+  fetch(`http://localhost:3000/info-general/${infoId}`, {
+    method: 'PATCH', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedData)
+  })
+  .then(response => {
+    if (response.status === 200) {
+     
+      alert('Actualización exitosa');
+    } else {
+     
+      alert('Hubo un error al actualizar');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+
+// Final del update informacion genereal en el html//
+
+
+
+
+
+
+
+
+
+
 //Botones sidebar
 let EditS = document.getElementById("EditarServ");
 let createS = document.getElementById("AgregarServ");
