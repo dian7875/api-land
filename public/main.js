@@ -70,14 +70,146 @@ document.getElementById("Confirm").addEventListener("click", function() {
 
 // Final del update informacion genereal en el html//
 
+// lista desplegable//
+fetch('http://localhost:3000/api/services') 
+  .then(response => response.json())
+  .then(data => {
+    
+    const selectElement = document.getElementById('IDService'); 
+    data.forEach(service => {
+      const option = document.createElement('option');
+      option.value = service.id; 
+      option.textContent = service.name; 
+      selectElement.appendChild(option);
+    });
+  })
+  .catch(error => console.error(error));
+// fin desplegable del service//
+// mostrar los datos en sus campos al seleccionar uno de la lista//
 
 
+const selectElement = document.getElementById('IDService');
 
 
+const urlInputElement = document.getElementById('Surl');
 
 
+selectElement.addEventListener('change', (event) => {
+  
+  const selectedServiceId = event.target.value;
 
 
+  fetch(`/api/services/${selectedServiceId}`)
+    .then(response => response.json())
+    .then(serviceData => {
+      
+      document.getElementById('Sname').value = serviceData.name;
+      document.getElementById('Sdesc').value = serviceData.description;
+
+      
+      urlInputElement.value = serviceData.icon; 
+    })
+    .catch(error => console.error(error));
+});
+
+// fin del relleno de datos segun el service seleccionado///
+/// request del service ////
+// meotodo post//
+document.getElementById("CreateService").addEventListener("click", function() {
+
+  var serviceName = document.getElementById("Sname").value;
+  var serviceDescription = document.getElementById("Sdesc").value;
+  var serviceIcon = document.getElementById("Surl").value;
+
+ 
+  var newService = {
+    name: serviceName,
+    description: serviceDescription,
+    icon: serviceIcon,
+    infoGeneralId: 1
+  };
+
+  fetch('http://localhost:3000/api/services', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newService)
+  })
+  .then(response => {
+    if (response.status === 201) {
+      alert('Servicio agregado con éxito');
+  
+    } else {
+      alert('Hubo un error al agregar el servicio');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+/// fin del post//
+/// metodo de patch///
+document.getElementById("EditService").addEventListener("click", function() {
+  var serviceId = document.getElementById("IDService").value;
+  var serviceName = document.getElementById("Sname").value;
+  var serviceDescription = document.getElementById("Sdesc").value;
+  var serviceIcon = document.getElementById("Surl").value;
+
+  var updatedService = {
+    name: serviceName,
+    description: serviceDescription,
+    icon: serviceIcon,
+
+  };
+
+  fetch(`/api/services/${serviceId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedService)
+  })
+  .then(response => {
+    if (response.status === 200) {
+      alert('Servicio actualizado con éxito');
+     o
+    } else {
+      alert('Hubo un error al actualizar el servicio');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+// fin del patch//
+/// metodo del delete ///
+
+document.getElementById("DeleteService").addEventListener("click", function() {
+  var serviceId = document.getElementById("IDService").value;
+
+ 
+  fetch(`/api/services/${serviceId}`, {
+    method: 'DELETE'
+  })
+  .then(response => {
+    if (response.status === 204) {
+      
+      var serviceElement = document.querySelector(`li[data-serviceid="${serviceId}"]`);
+      if (serviceElement) {
+        serviceElement.remove();
+      }
+
+    
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+
+/// fin del delete//
+//// fin del request de service////
 
 //Botones sidebar
 let EditS = document.getElementById("EditarServ");
