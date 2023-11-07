@@ -71,12 +71,11 @@ document.getElementById("Confirm").addEventListener("click", function() {
 // Final del update informacion genereal en el html//
 
 // lista desplegable//
-fetch('http://localhost:3000/api/services') 
+fetch(urlFet) 
   .then(response => response.json())
   .then(data => {
-    
     const selectElement = document.getElementById('IDService'); 
-    data.forEach(service => {
+    data.services.forEach(service => {
       const option = document.createElement('option');
       option.value = service.id; 
       option.textContent = service.name; 
@@ -299,7 +298,7 @@ EdiInf.addEventListener("click", function () {
   hiddenServ();
   EditInf();
   hiddenImgs();
-  fetch('http://localhost:3000/api/infogeneral/1')
+  fetch(urlFet)
   .then(response => response.json())
   .then(RYC => {
     RYCDATA = RYC;
