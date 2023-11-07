@@ -37,7 +37,10 @@ export class InfoGeneral {
     @OneToMany(() => Service, services=> services.InfoGeneral)
     services: Service[];
     
-    @OneToOne(() => Galery)
-    @JoinColumn()
-    galery: Galery
+    //@OneToOne(() => Galery)
+   // @JoinColumn()
+    //galery: Galery
+    
+    @OneToMany(() => Galery, Galery => Galery.InfoGeneral)
+    Galery: Galery[];
 }

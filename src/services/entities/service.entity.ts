@@ -15,6 +15,7 @@ export class Service {
 
     @Column()
     icon: string;
+    
     @Column()
     infoGeneralId:number;
 

@@ -1,1 +1,5 @@
-export class CreateGaleryDto {}
+export class CreateGaleryDto {
+    id:number;
+    url: string;
+    infoGeneralId:number;
+}
