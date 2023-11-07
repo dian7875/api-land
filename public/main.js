@@ -4,19 +4,31 @@ window.addEventListener("load", function (event) {
 
 });
 
+let urlFet = "http://localhost:3000/api/infogeneral/1"
+
+
+var Logo = document.getElementById("LogoI");
+var Banner = document.getElementById("BanIn");
+var CompanyName = document.getElementById("NameC");
+var Description = document.getElementById("DescC");
+var History = document.getElementById("HistC");
+var Phone = document.getElementById("TelC");
+var Phone2 = document.getElementById("Tel2C");
+var Direction = document.getElementById("DirC");
+var Email = document.getElementById("MailC");
 
 // Inicio del update informacion genereal en el html//
 document.getElementById("Confirm").addEventListener("click", function() {
   // Obtén los valores de los campos de entrada que deseas actualizar
-  var newLogo = document.getElementById("LogoI").value;
-  var newBanner = document.getElementById("BanIn").value;
-  var newCompanyName = document.getElementById("NameC").value;
-  var newDescription = document.getElementById("DescC").value;
-  var newHistory = document.getElementById("HistC").value;
-  var newPhone = document.getElementById("TelC").value;
-  var newPhone2 = document.getElementById("Tel2C").value;
-  var newDirection = document.getElementById("DirC").value;
-  var newEmail = document.getElementById("MailC").value;
+  var newLogo = Logo.value;
+  var newBanner = Banner.value;
+  var newCompanyName = CompanyName.value;
+  var newDescription = Description.value;
+  var newHistory = History.value;
+  var newPhone = Phone.value;
+  var newPhone2 = Phone2.value;
+  var newDirection = Direction.value;
+  var newEmail = Email.value;
 
   // Crea un objeto que contenga los datos que deseas actualizar
   var updatedData = {
@@ -35,7 +47,7 @@ document.getElementById("Confirm").addEventListener("click", function() {
   var infoId = 1; // variable por si cambiaramos la id del elemento en la db
 
  
-  fetch(`http://localhost:3000/info-general/${infoId}`, {
+  fetch(urlFet, {
     method: 'PATCH', 
     headers: {
       'Content-Type': 'application/json'
@@ -155,6 +167,21 @@ EdiInf.addEventListener("click", function () {
   hiddenServ();
   EditInf();
   hiddenImgs();
+  fetch('http://localhost:3000/api/infogeneral/1')
+  .then(response => response.json())
+  .then(RYC => {
+    RYCDATA = RYC;
+    Logo.value = RYCDATA.logo;
+    ImgLog.src=RYCDATA.logo;   
+    Banner.value = RYCDATA.imgDescription;
+    CompanyName.value = RYCDATA.companyName;
+    Description.value = RYCDATA.description;
+    History.value = RYCDATA.history; 
+    Phone.value = RYCDATA.tel  ;    
+    Phone2.value = RYCDATA.tel2   ;  
+    Direction.value = RYCDATA.direction ; 
+    Email.value = RYCDATA.correo;
+  });
 })
 scrImgLog.addEventListener("input", function () {
   const nuevoSrc = scrImgLog.value;
