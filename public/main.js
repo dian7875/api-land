@@ -43,18 +43,18 @@ document.getElementById("Confirm").addEventListener("click", function() {
     history: newHistory
   };
 
+  var metodo={
+    
+      method: 'PATCH', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedData)
+    }
   
-  var infoId = 1; // variable por si cambiaramos la id del elemento en la db
+    var urldest = "http://localhost:3000/api/infogeneral/1"
 
- 
-  fetch(urlFet, {
-    method: 'PATCH', 
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(updatedData)
-  })
-  .then(response => {
+  fechData(urldest,metodo).then(response => {
     if (response.status === 200) {
      
       alert('Actualización exitosa');
@@ -211,6 +211,10 @@ document.getElementById("DeleteService").addEventListener("click", function() {
 /// fin del delete//
 //// fin del request de service////
 
+function fechData(URL,met){
+  return fetch(URL,
+  {met})
+  }
 //Botones sidebar
 let EditS = document.getElementById("EditarServ");
 let createS = document.getElementById("AgregarServ");
@@ -295,12 +299,12 @@ function hiddenInf() {
   InfoGenDsi.style.visibility = "hidden";
 }
 
+
 EdiInf.addEventListener("click", function () {
   hiddenServ();
   EditInf();
   hiddenImgs();
-  fetch('http://localhost:3000/api/infogeneral/1')
-  .then(response => response.json())
+  fechData(urlFet,null).then(response => response.json())
   .then(RYC => {
     RYCDATA = RYC;
     Logo.value = RYCDATA.logo;
