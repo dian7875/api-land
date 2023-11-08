@@ -1,19 +1,20 @@
 
-import { Photo } from "src/photos/entities/photo.entity";
-import {Column, Entity,OneToMany, PrimaryGeneratedColumn
+import { InfoGeneral } from "src/info-general/entities/info-general.entity";
+import { Column, Entity,ManyToOne,OneToMany, PrimaryGeneratedColumn
 }from "typeorm";
 
 @Entity('galery')
 export class Galery {
     @PrimaryGeneratedColumn()
     id:number;
+    @Column()
+    url: string;
     
-  
-
-    @OneToMany(() => Photo, photos => photos.galery)
-    photos: Photo[];
+    @Column()
+    infoGeneralId:number;
     
-   
+    @ManyToOne(() => InfoGeneral, InfoGeneral=> InfoGeneral.Galery)
+    InfoGeneral: InfoGeneral;
   
 
 }

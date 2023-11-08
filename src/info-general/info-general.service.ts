@@ -26,7 +26,7 @@ export class InfoGeneralService {
   }
 
   findOne(id: number) {
-    return this.infoRepository.findOneBy({id});
+    return this.infoRepository.findOne({where:{id},relations:['services', 'Galery']});
   }
 
   async update(id: number, updateInfoGeneralDto: UpdateInfoGeneralDto) {
