@@ -6,6 +6,10 @@ window.addEventListener("load", function (event) {
 
 let urlFet = "http://localhost:3000/api/infogeneral/1"
 
+//Info general funciones y variables
+//variables
+
+
 
 var Logo = document.getElementById("LogoI");
 var Banner = document.getElementById("BanIn");
@@ -17,9 +21,9 @@ var Phone2 = document.getElementById("Tel2C");
 var Direction = document.getElementById("DirC");
 var Email = document.getElementById("MailC");
 
-// Inicio del update informacion genereal en el html//
-document.getElementById("Confirm").addEventListener("click", function() {
-  // Obtén los valores de los campos de entrada que deseas actualizar
+
+document.getElementById("Confirm").addEventListener("click", function () {
+
   var newLogo = Logo.value;
   var newBanner = Banner.value;
   var newCompanyName = CompanyName.value;
@@ -30,7 +34,6 @@ document.getElementById("Confirm").addEventListener("click", function() {
   var newDirection = Direction.value;
   var newEmail = Email.value;
 
-  // Crea un objeto que contenga los datos que deseas actualizar
   var updatedData = {
     logo: newLogo,
     companyName: newCompanyName,
@@ -43,18 +46,25 @@ document.getElementById("Confirm").addEventListener("click", function() {
     history: newHistory
   };
 
-  var metodo={
-    
-      method: 'PATCH', 
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(updatedData)
-    }
-  
-    var urldest = "http://localhost:3000/api/infogeneral/1"
+  var metodo = {
 
-  fechData(urldest,metodo).then(response => {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedData)
+  }
+
+  var urldest = "http://localhost:3000/api/infogeneral/1"
+
+  fetch(urlFet, {
+    method: 'PATCH', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedData)
+  })
+  .then(response => {
     if (response.status === 200) {
      
       alert('Actualización exitosa');
@@ -68,67 +78,64 @@ document.getElementById("Confirm").addEventListener("click", function() {
   });
 });
 
-// Final del update informacion genereal en el html//
 
-// lista desplegable//
-fetch('http://localhost:3000/api/services') 
+//Servicios Funciones y variables
+const selectElement = document.getElementById('IDService');
+const urlInputElement = document.getElementById('Surl');
+var serviceName = document.getElementById("Sname");
+var serviceDescription = document.getElementById("Sdesc");
+var serviceIcon = document.getElementById("Surl");
+var serviceId = document.getElementById("IDService");
+
+//!cambiar
+fetch('http://localhost:3000/api/services')
   .then(response => response.json())
   .then(data => {
-    
-    const selectElement = document.getElementById('IDService'); 
+
+    const selectElement = document.getElementById('IDService');
     data.forEach(service => {
       const option = document.createElement('option');
-      option.value = service.id; 
-      option.textContent = service.name; 
+      option.value = service.id;
+      option.textContent = service.name;
       selectElement.appendChild(option);
     });
   })
   .catch(error => console.error(error));
-// fin desplegable del service//
-// mostrar los datos en sus campos al seleccionar uno de la lista//
 
 
-const selectElement = document.getElementById('IDService');
-
-
-const urlInputElement = document.getElementById('Surl');
-
-
+//!cambiar
 selectElement.addEventListener('change', (event) => {
-  
+
   const selectedServiceId = event.target.value;
 
 
   fetch(`/api/services/${selectedServiceId}`)
     .then(response => response.json())
     .then(serviceData => {
-      
-      document.getElementById('Sname').value = serviceData.name;
-      document.getElementById('Sdesc').value = serviceData.description;
 
-      
-      urlInputElement.value = serviceData.icon; 
+      serviceName.value = serviceData.name;
+      serviceDescription.value = serviceData.description;
+      Simg.src = serviceData.icon;
+      urlInputElement.value = serviceData.icon;
     })
     .catch(error => console.error(error));
 });
 
-// fin del relleno de datos segun el service seleccionado///
-/// request del service ////
-// meotodo post//
-document.getElementById("CreateService").addEventListener("click", function() {
+//Post
+document.getElementById("CreateService").addEventListener("click", function () {
 
-  var serviceName = document.getElementById("Sname").value;
-  var serviceDescription = document.getElementById("Sdesc").value;
-  var serviceIcon = document.getElementById("Surl").value;
+  var NewserviceName = serviceName.value;
+  var NewserviceDescription = serviceDescription.value;
+  var NewserviceIcon = serviceIcon.value;
 
- 
   var newService = {
-    name: serviceName,
-    description: serviceDescription,
-    icon: serviceIcon,
+    name: NewserviceName,
+    description: NewserviceDescription,
+    icon: NewserviceIcon,
     infoGeneralId: 1
   };
 
+  //!cambiar
   fetch('http://localhost:3000/api/services', {
     method: 'POST',
     headers: {
@@ -136,85 +143,75 @@ document.getElementById("CreateService").addEventListener("click", function() {
     },
     body: JSON.stringify(newService)
   })
-  .then(response => {
-    if (response.status === 201) {
-      alert('Servicio agregado con éxito');
-  
-    } else {
-      alert('Hubo un error al agregar el servicio');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+    .then(response => {
+      if (response.status === 201) {
+        alert('Servicio agregado con éxito');
+
+      } else {
+        alert('Hubo un error al agregar el servicio');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 });
-/// fin del post//
-/// metodo de patch///
-document.getElementById("EditService").addEventListener("click", function() {
-  var serviceId = document.getElementById("IDService").value;
-  var serviceName = document.getElementById("Sname").value;
-  var serviceDescription = document.getElementById("Sdesc").value;
-  var serviceIcon = document.getElementById("Surl").value;
+
+//Patch
+document.getElementById("EditService").addEventListener("click", function () {
+  var SerchserviceId = serviceId.value;
+  var serviceNewName = serviceName.value;
+  var serviceNewDescription = serviceDescription.value;
+  var serviceNewIcon = serviceIcon.value;
 
   var updatedService = {
-    name: serviceName,
-    description: serviceDescription,
-    icon: serviceIcon,
+    name: serviceNewName,
+    description: serviceNewDescription,
+    icon: serviceNewIcon,
 
   };
-
-  fetch(`/api/services/${serviceId}`, {
+  //!Cambiar
+  fetch(`/api/services/${SerchserviceId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(updatedService)
   })
-  .then(response => {
-    if (response.status === 200) {
-      alert('Servicio actualizado con éxito');
-     o
-    } else {
-      alert('Hubo un error al actualizar el servicio');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+    .then(response => {
+      if (response.status === 200) {
+        alert('Servicio actualizado con éxito');
+      } else {
+        alert('Hubo un error al actualizar el servicio');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 });
-// fin del patch//
-/// metodo del delete ///
 
-document.getElementById("DeleteService").addEventListener("click", function() {
-  var serviceId = document.getElementById("IDService").value;
+/// DELETE
+document.getElementById("DeleteService").addEventListener("click", function () {
+  var SerchserviceId = serviceId.value;
 
- 
-  fetch(`/api/services/${serviceId}`, {
+  //!cambiar
+  fetch(`/api/services/${SerchserviceId}`, {
     method: 'DELETE'
   })
-  .then(response => {
-    if (response.status === 204) {
-      
-      var serviceElement = document.querySelector(`li[data-serviceid="${serviceId}"]`);
-      if (serviceElement) {
-        serviceElement.remove();
-      }
+    .then(response => {
+      if (response.status === 204) {
 
-    
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+        var serviceElement = document.querySelector(`li[data-serviceid="${SerchserviceId}"]`);
+        if (serviceElement) {
+          serviceElement.remove();
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 });
 
-/// fin del delete//
-//// fin del request de service////
 
-function fechData(URL,met){
-  return fetch(URL,
-  {met})
-  }
 //Botones sidebar
 let EditS = document.getElementById("EditarServ");
 let createS = document.getElementById("AgregarServ");
@@ -239,7 +236,7 @@ function hiddenServ() {
   SC.style.visibility = "hidden";
 }
 function editSer() {
- 
+
   ListSe.style.visibility = "visible";
   Service.style.visibility = "visible";
   SC.style.visibility = "hidden";
@@ -247,8 +244,16 @@ function editSer() {
   SE.style.visibility = "visible";
 }
 
+function inicioVacio(){
+  serviceName.value = "";
+  serviceDescription.value ="";
+  serviceIcon.value = "";
+  Simg.src = 'https://i.pinimg.com/originals/fa/a5/62/faa5625612ebb5d14e955fe0aa8a616d.png';
+}
+
 function createServ() {
-  
+
+  inicioVacio();
   ListSe.style.visibility = "hidden";
   Service.style.visibility = "visible";
   SC.style.visibility = "visible";
@@ -256,7 +261,7 @@ function createServ() {
   SE.style.visibility = "hidden";
 }
 function deleteServ() {
- 
+  inicioVacio();
   ListSe.style.visibility = "visible";
   Service.style.visibility = "visible";
   SC.style.visibility = "hidden";
@@ -265,6 +270,7 @@ function deleteServ() {
 }
 
 EditS.addEventListener("click", function () {
+  inicioVacio();
   editSer();
   hiddenInf();
   hiddenImgs();
@@ -304,11 +310,13 @@ EdiInf.addEventListener("click", function () {
   hiddenServ();
   EditInf();
   hiddenImgs();
-  fechData(urlFet,null).then(response => response.json())
+  fetch('http://localhost:3000/api/infogeneral/1')
+  .then(response => response.json())
   .then(RYC => {
     RYCDATA = RYC;
     Logo.value = RYCDATA.logo;
     ImgLog.src=RYCDATA.logo;   
+    ImgBAN.src=RYCDATA.imgDescription;
     Banner.value = RYCDATA.imgDescription;
     CompanyName.value = RYCDATA.companyName;
     Description.value = RYCDATA.description;
@@ -346,8 +354,8 @@ var InfG = document.getElementById("galleryInf");//Info de galeria
 let ID = document.getElementById("EditIMG");
 let IE = document.getElementById("DeleteIMG");
 let IC = document.getElementById("CreateIMG");
-var GalImg=document.getElementById("IMGGal");
-var urlGal=document.getElementById("URLphoto");
+var GalImg = document.getElementById("IMGGal");
+var urlGal = document.getElementById("URLphoto");
 
 urlGal.addEventListener("input", function () {
   const nuevoSrc = urlGal.value;
