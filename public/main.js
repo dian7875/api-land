@@ -1,12 +1,217 @@
 window.addEventListener("load", function (event) {
   console.log("'Todos los recursos terminaron de cargar!");
-
-
 });
 
-let urlFet = "http://localhost:3000/api/infogeneral/1"
+//Botones sidebar
+let EditS = document.getElementById("EditarServ");
+let createS = document.getElementById("AgregarServ");
+let DeleteS = document.getElementById("EliminarServ");
+let AddImg = document.getElementById("AgregarIMG");
+let DelImg = document.getElementById("EliminarIMG");
+let EdiImg = document.getElementById("EditarIMG");
+let EdiInf = document.getElementById("InfEdit");
+
+//Servicios Funciones y variables
+const selectIDSERV = document.getElementById('IDService');
+const urlInputElement = document.getElementById('Surl');
+var serviceName = document.getElementById("Sname");
+var serviceDescription = document.getElementById("Sdesc");
+var serviceIcon = document.getElementById("Surl");
+var serviceId = document.getElementById("IDService");
+
+function loadComboSID(){
+  while (selectIDSERV.length > 1) {
+    selectIDSERV.remove(1);
+  };
+  fetch('http://localhost:3000/api/services')
+  .then(response => response.json())
+  .then(data => {
+
+    const selectIDSERV = document.getElementById('IDService');
+    data.forEach(service => {
+      const option = document.createElement('option');
+      option.value = service.id;
+      option.textContent = service.name;
+      selectIDSERV.appendChild(option);
+    });
+  })
+  .catch(error => console.error(error));
+}
+
+selectIDSERV.addEventListener('change', (event) => {
+  const selectedServiceId = event.target.value;
+  fetch(`/api/services/${selectedServiceId}`)
+    .then(response => response.json())
+    .then(serviceData => {
+      serviceName.value = serviceData.name;
+      serviceDescription.value = serviceData.description;
+      Simg.src = serviceData.icon;
+      urlInputElement.value = serviceData.icon;
+    }).catch(error => console.error(error));
+});
+
+document.getElementById("CreateService").addEventListener("click", function () {
+
+  var NewserviceName = serviceName.value;
+  var NewserviceDescription = serviceDescription.value;
+  var NewserviceIcon = serviceIcon.value;
+
+  var newService = {
+    name: NewserviceName,
+    description: NewserviceDescription,
+    icon: NewserviceIcon,
+    infoGeneralId: 1
+  };
+
+  fetch('http://localhost:3000/api/services', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newService)
+  })
+    .then(response => {
+      if (response.status === 201) {
+        alert('Servicio agregado con éxito');
+
+      } else {
+        alert('Hubo un error al agregar el servicio');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+});
 
 
+document.getElementById("EditService").addEventListener("click", function () {
+  var SerchserviceId = serviceId.value;
+  var serviceNewName = serviceName.value;
+  var serviceNewDescription = serviceDescription.value;
+  var serviceNewIcon = serviceIcon.value;
+
+  var updatedService = {
+    name: serviceNewName,
+    description: serviceNewDescription,
+    icon: serviceNewIcon,
+
+  };
+
+  fetch(`/api/services/${SerchserviceId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedService)
+  })
+    .then(response => {
+      if (response.status === 200) {
+        alert('Servicio actualizado con éxito');
+      } else {
+        alert('Hubo un error al actualizar el servicio');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+});
+
+document.getElementById("DeleteService").addEventListener("click", function () {
+  var SerchserviceId = serviceId.value;
+
+  fetch(`/api/services/${SerchserviceId}`, {
+    method: 'DELETE'
+  })
+    .then(response => {
+      if (response.status === 204) {
+
+        var serviceElement = document.querySelector(`li[data-serviceid="${SerchserviceId}"]`);
+        if (serviceElement) {
+          serviceElement.remove();
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+});
+
+//BOTONES DE SERVICIOS
+let Service = document.getElementById("Servicios");
+let ListSe = document.getElementById("IDService")
+let SC = document.getElementById("CreateService");
+let SD = document.getElementById("DeleteService");
+let SE = document.getElementById("EditService");
+var Surl = document.getElementById("Surl");
+var Simg = document.getElementById("Simg");
+
+function hiddenServ() {
+  Service.style.visibility = "hidden";
+  ListSe.style.visibility = "hidden";
+  SD.style.visibility = "hidden";
+  SE.style.visibility = "hidden";
+  SC.style.visibility = "hidden";
+}
+
+function editSer() {
+  ListSe.style.visibility = "visible";
+  Service.style.visibility = "visible";
+  SC.style.visibility = "hidden";
+  SD.style.visibility = "hidden";
+  SE.style.visibility = "visible";
+}
+
+function inicioVacio(){
+  serviceName.value = "";
+  serviceDescription.value ="";
+  serviceIcon.value = "";
+  Simg.src = 'https://i.pinimg.com/originals/fa/a5/62/faa5625612ebb5d14e955fe0aa8a616d.png';
+}
+
+function createServ() {
+  ListSe.style.visibility = "hidden";
+  Service.style.visibility = "visible";
+  SC.style.visibility = "visible";
+  SD.style.visibility = "hidden";
+  SE.style.visibility = "hidden";
+}
+
+function deleteServ() {
+  ListSe.style.visibility = "visible";
+  Service.style.visibility = "visible";
+  SC.style.visibility = "hidden";
+  SD.style.visibility = "visible";
+  SE.style.visibility = "hidden";
+}
+
+EditS.addEventListener("click", function () {
+  inicioVacio();
+  editSer();
+  hiddenInf();
+  hiddenImgs();
+  loadComboSID();
+})
+createS.addEventListener("click", function () {
+  inicioVacio();
+  createServ();
+  hiddenInf();
+  hiddenImgs();
+})
+DeleteS.addEventListener("click", function () {
+  inicioVacio();
+  deleteServ();
+  hiddenInf();
+  hiddenImgs();
+  loadComboSID();
+})
+Surl.addEventListener("input", function () {
+  const nuevoSrc = Surl.value;
+  Simg.src = nuevoSrc;
+});
+
+
+//Info general funciones y variables
+//variables
 var Logo = document.getElementById("LogoI");
 var Banner = document.getElementById("BanIn");
 var CompanyName = document.getElementById("NameC");
@@ -16,10 +221,12 @@ var Phone = document.getElementById("TelC");
 var Phone2 = document.getElementById("Tel2C");
 var Direction = document.getElementById("DirC");
 var Email = document.getElementById("MailC");
-
-// Inicio del update informacion genereal en el html//
-document.getElementById("Confirm").addEventListener("click", function() {
-  // Obtén los valores de los campos de entrada que deseas actualizar
+var ImgLog = document.getElementById("Logop");
+var ImgBAN = document.getElementById("LogoB");
+let InfoGenDsi = document.getElementById("ActionInfo");
+var cancels = document.getElementsByClassName("cancelar");
+//funciones
+document.getElementById("Confirm").addEventListener("click", function () {
   var newLogo = Logo.value;
   var newBanner = Banner.value;
   var newCompanyName = CompanyName.value;
@@ -30,7 +237,6 @@ document.getElementById("Confirm").addEventListener("click", function() {
   var newDirection = Direction.value;
   var newEmail = Email.value;
 
-  // Crea un objeto que contenga los datos que deseas actualizar
   var updatedData = {
     logo: newLogo,
     companyName: newCompanyName,
@@ -42,19 +248,15 @@ document.getElementById("Confirm").addEventListener("click", function() {
     direction: newDirection,
     history: newHistory
   };
-
-  var metodo={
-    
-      method: 'PATCH', 
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(updatedData)
-    }
   
-    var urldest = "http://localhost:3000/api/infogeneral/1"
-
-  fechData(urldest,metodo).then(response => {
+  fetch("http://localhost:3000/api/infogeneral/1", {
+    method: 'PATCH', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedData)
+  })
+  .then(response => {
     if (response.status === 200) {
      
       alert('Actualización exitosa');
@@ -68,247 +270,26 @@ document.getElementById("Confirm").addEventListener("click", function() {
   });
 });
 
-// Final del update informacion genereal en el html//
-
-// lista desplegable//
-fetch('http://localhost:3000/api/services') 
-  .then(response => response.json())
-  .then(data => {
-    
-    const selectElement = document.getElementById('IDService'); 
-    data.forEach(service => {
-      const option = document.createElement('option');
-      option.value = service.id; 
-      option.textContent = service.name; 
-      selectElement.appendChild(option);
-    });
-  })
-  .catch(error => console.error(error));
-// fin desplegable del service//
-// mostrar los datos en sus campos al seleccionar uno de la lista//
-
-
-const selectElement = document.getElementById('IDService');
-
-
-const urlInputElement = document.getElementById('Surl');
-
-
-selectElement.addEventListener('change', (event) => {
-  
-  const selectedServiceId = event.target.value;
-
-
-  fetch(`/api/services/${selectedServiceId}`)
-    .then(response => response.json())
-    .then(serviceData => {
-      
-      document.getElementById('Sname').value = serviceData.name;
-      document.getElementById('Sdesc').value = serviceData.description;
-
-      
-      urlInputElement.value = serviceData.icon; 
-    })
-    .catch(error => console.error(error));
-});
-
-// fin del relleno de datos segun el service seleccionado///
-/// request del service ////
-// meotodo post//
-document.getElementById("CreateService").addEventListener("click", function() {
-
-  var serviceName = document.getElementById("Sname").value;
-  var serviceDescription = document.getElementById("Sdesc").value;
-  var serviceIcon = document.getElementById("Surl").value;
-
- 
-  var newService = {
-    name: serviceName,
-    description: serviceDescription,
-    icon: serviceIcon,
-    infoGeneralId: 1
-  };
-
-  fetch('http://localhost:3000/api/services', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(newService)
-  })
-  .then(response => {
-    if (response.status === 201) {
-      alert('Servicio agregado con éxito');
-  
-    } else {
-      alert('Hubo un error al agregar el servicio');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-});
-/// fin del post//
-/// metodo de patch///
-document.getElementById("EditService").addEventListener("click", function() {
-  var serviceId = document.getElementById("IDService").value;
-  var serviceName = document.getElementById("Sname").value;
-  var serviceDescription = document.getElementById("Sdesc").value;
-  var serviceIcon = document.getElementById("Surl").value;
-
-  var updatedService = {
-    name: serviceName,
-    description: serviceDescription,
-    icon: serviceIcon,
-
-  };
-
-  fetch(`/api/services/${serviceId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(updatedService)
-  })
-  .then(response => {
-    if (response.status === 200) {
-      alert('Servicio actualizado con éxito');
-     o
-    } else {
-      alert('Hubo un error al actualizar el servicio');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-});
-// fin del patch//
-/// metodo del delete ///
-
-document.getElementById("DeleteService").addEventListener("click", function() {
-  var serviceId = document.getElementById("IDService").value;
-
- 
-  fetch(`/api/services/${serviceId}`, {
-    method: 'DELETE'
-  })
-  .then(response => {
-    if (response.status === 204) {
-      
-      var serviceElement = document.querySelector(`li[data-serviceid="${serviceId}"]`);
-      if (serviceElement) {
-        serviceElement.remove();
-      }
-
-    
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-});
-
-/// fin del delete//
-//// fin del request de service////
-
-function fechData(URL,met){
-  return fetch(URL,
-  {met})
-  }
-//Botones sidebar
-let EditS = document.getElementById("EditarServ");
-let createS = document.getElementById("AgregarServ");
-let DeleteS = document.getElementById("EliminarServ");
-let AddImg = document.getElementById("AgregarIMG");
-let DelImg = document.getElementById("EliminarIMG");
-let EdiImg = document.getElementById("EditarIMG");
-let EdiInf = document.getElementById("InfEdit");
-//Segmento de servicios
-let Service = document.getElementById("Servicios");
-let ListSe = document.getElementById("IDService")
-let SC = document.getElementById("CreateService");
-let SD = document.getElementById("DeleteService");
-let SE = document.getElementById("EditService");
-var Surl = document.getElementById("Surl");
-var Simg = document.getElementById("Simg");
-function hiddenServ() {
-  Service.style.visibility = "hidden";
-  ListSe.style.visibility = "hidden";
-  SD.style.visibility = "hidden";
-  SE.style.visibility = "hidden";
-  SC.style.visibility = "hidden";
-}
-function editSer() {
- 
-  ListSe.style.visibility = "visible";
-  Service.style.visibility = "visible";
-  SC.style.visibility = "hidden";
-  SD.style.visibility = "hidden";
-  SE.style.visibility = "visible";
-}
-
-function createServ() {
-  
-  ListSe.style.visibility = "hidden";
-  Service.style.visibility = "visible";
-  SC.style.visibility = "visible";
-  SD.style.visibility = "hidden";
-  SE.style.visibility = "hidden";
-}
-function deleteServ() {
- 
-  ListSe.style.visibility = "visible";
-  Service.style.visibility = "visible";
-  SC.style.visibility = "hidden";
-  SD.style.visibility = "visible";
-  SE.style.visibility = "hidden";
-}
-
-EditS.addEventListener("click", function () {
-  editSer();
-  hiddenInf();
-  hiddenImgs();
-})
-createS.addEventListener("click", function () {
-  createServ();
-  hiddenInf();
-  hiddenImgs();
-})
-DeleteS.addEventListener("click", function () {
-  deleteServ();
-  hiddenInf();
-  hiddenImgs();
-})
-Surl.addEventListener("input", function () {
-  const nuevoSrc = Surl.value;
-  Simg.src = nuevoSrc;
-});
-
-//Segmento de Informacion General
-var scrImgLog = document.getElementById("LogoI");
-var ImgLog = document.getElementById("Logop");
-var ImgBAN = document.getElementById("LogoB");
-var scrBAN = document.getElementById("BanIn");
-let InfoGenDsi = document.getElementById("ActionInfo");
-var cancels = document.getElementsByClassName("cancelar");
 
 function EditInf() {
   InfoGenDsi.style.visibility = "visible";
 }
+
 function hiddenInf() {
   InfoGenDsi.style.visibility = "hidden";
 }
-
 
 EdiInf.addEventListener("click", function () {
   hiddenServ();
   EditInf();
   hiddenImgs();
-  fechData(urlFet,null).then(response => response.json())
+  fetch('http://localhost:3000/api/infogeneral/1')
+  .then(response => response.json())
   .then(RYC => {
     RYCDATA = RYC;
     Logo.value = RYCDATA.logo;
     ImgLog.src=RYCDATA.logo;   
+    ImgBAN.src=RYCDATA.imgDescription;
     Banner.value = RYCDATA.imgDescription;
     CompanyName.value = RYCDATA.companyName;
     Description.value = RYCDATA.description;
@@ -319,14 +300,15 @@ EdiInf.addEventListener("click", function () {
     Email.value = RYCDATA.correo;
   });
 })
-scrImgLog.addEventListener("input", function () {
-  const nuevoSrc = scrImgLog.value;
+Logo.addEventListener("input", function () {
+  const nuevoSrc = Logo.value;
   ImgLog.src = nuevoSrc;
 });
-scrBAN.addEventListener("input", function () {
-  const nuevoSrc = scrBAN.value;
+Banner.addEventListener("input", function () {
+  const nuevoSrc = Banner.value;
   ImgBAN.src = nuevoSrc;
 });
+
 //Botones cancelar
 function cancel() {
   hiddenServ();
@@ -340,34 +322,53 @@ for (var i = 0; i < cancels.length; i++) {
 }
 
 //segmento de imagenes
+//combobox y carga de elementos del combobox
+var ListaGall = document.getElementById("IDPhoto");
+var urlFoto = document.getElementById("URLphoto"); //Input
+var imgP = document.getElementById("IMGGal"); //IMAGEN
 
-var IDPhoto = document.getElementById("IDPhoto");//ComboBox de Galeria
-var InfG = document.getElementById("galleryInf");//Info de galeria
-let ID = document.getElementById("EditIMG");
-let IE = document.getElementById("DeleteIMG");
+function loadComboOp(){
+  while (ListaGall.length > 1) {
+    ListaGall.remove(1);
+  };
+  fetch('http://localhost:3000/api/Galery')
+  .then(response => response.json())
+  .then(data => {
+    const selectIDSERV = document.getElementById('IDPhoto');
+    data.forEach(Galery => {
+      const option = document.createElement('option');
+      option.value = Galery.id;
+      option.textContent = Galery.id;
+      selectIDSERV.appendChild(option);
+    });
+  })
+  .catch(error => console.error(error));
+};
+
+ListaGall.addEventListener('change', (event) => {
+
+  const selectPhotoId = event.target.value;
+
+
+  fetch(`http://localhost:3000/api/Galery/${selectPhotoId}`)
+    .then(response => response.json())
+    .then(GaleryData => {
+      console.log(GaleryData)
+      urlFoto.value = GaleryData.url;
+      imgP.src= GaleryData.url;
+    })
+    .catch(error => console.error(error));
+});
+
+//Galeria botones y texto
+var InfG = document.getElementById("galleryInf");
+let ID = document.getElementById("DeleteIMG");
+let IE = document.getElementById("EditIMG");
 let IC = document.getElementById("CreateIMG");
-var GalImg=document.getElementById("IMGGal");
-var urlGal=document.getElementById("URLphoto");
 
-urlGal.addEventListener("input", function () {
-  const nuevoSrc = urlGal.value;
-  GalImg.src = nuevoSrc;
-});
-
-AddImg.addEventListener("click", function () {
-  hiddenServ();
-  hiddenInf();
-  ShowImgAdd();
-});
-EdiImg.addEventListener("click", function () {
-  hiddenServ();
-  hiddenInf();
-  showImgEdit();
-});
-DelImg.addEventListener("click", function () {
-  hiddenServ();
-  hiddenInf();
-  showImgDele();
+urlFoto.addEventListener("input", function () {
+  const nuevoSrc = urlFoto.value;
+  imgP.src = nuevoSrc;
 });
 
 function hiddenImgs() {
@@ -377,30 +378,50 @@ function hiddenImgs() {
   ID.style.visibility = "hidden";
   IE.style.visibility = "hidden";
 }
-
+function loadEmpy(){
+urlFoto.value ="";
+imgP.src="https://i.pinimg.com/originals/fa/a5/62/faa5625612ebb5d14e955fe0aa8a616d.png";
+}
 function showImgEdit() {
   IDPhoto.style.visibility = "visible";
   InfG.style.visibility = "visible";
   IE.style.visibility = "visible";
   IC.style.visibility = "hidden";
   ID.style.visibility = "hidden";
+  loadEmpy();
 }
+EdiImg.addEventListener("click", function () {
+  hiddenServ();
+  hiddenInf();
+  showImgEdit();
+  loadComboOp();
+});
 function showImgDele() {
   IDPhoto.style.visibility = "visible";
   InfG.style.visibility = "visible";
   ID.style.visibility = "visible";
   IE.style.visibility = "hidden";
   IC.style.visibility = "hidden";
+  loadEmpy();
 }
+DelImg.addEventListener("click", function () {
+  hiddenServ();
+  hiddenInf();
+  showImgDele();
+  loadComboOp();
+});
 function ShowImgAdd() {
-  IDPhoto.style.visibility = "hidden";
+  ListaGall.style.visibility = "hidden";
   InfG.style.visibility = "visible";
   IC.style.visibility = "visible";
   IE.style.visibility = "hidden";
   ID.style.visibility = "hidden";
-
+  loadEmpy();
 }
-
-
+AddImg.addEventListener("click", function () {
+  hiddenServ();
+  hiddenInf();
+  ShowImgAdd();
+});
 
 
