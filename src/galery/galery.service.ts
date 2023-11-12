@@ -23,7 +23,7 @@ export class GaleryService {
   }
 
   findOne(id: number) {
-   return this.GaleryRepository.findOne({where:{id}, relations:['photos']});
+   return this.GaleryRepository.findOneBy({ id });
   }
 
   async update(id: number, updateGaleryDto: UpdateGaleryDto) {
