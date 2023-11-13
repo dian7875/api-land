@@ -6,14 +6,24 @@ body {
 
 .sidebar {
     background-color: rgb(23, 214, 214);
-    width: 20%;
+    width: 10%;
     height: 100%;
     position: absolute;
 }
 
 #Logo {
-    width: 50%;
+    width: 100%;
     height: auto;
+}
+ul{
+    list-style: none;
+    padding-left: 15px;
+}
+li{
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 #container {
@@ -43,14 +53,15 @@ body {
     flex-direction: column;
     justify-content: center;
 }
-
-.InfoService {
+#InfoService{
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
+
 .btn {
     display: flex;
     justify-content: space-around;

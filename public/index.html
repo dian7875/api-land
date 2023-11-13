@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3721/3721726.png" type="image/x-icon">
     <title>RYC pagina administrativa</title>
 </head>
 
@@ -14,23 +15,23 @@
         <span>
             <h2>Informacion General</h2>
             <ul class="subMenu">
-                <li><button type="button" id="InfEdit">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button type="button" id="InfEdit">Editar</button></li>
             </ul>
         </span>
         <span>
             <h2>Servicios</h2>
             <ul class="subMenu">
-                <li><button type="button" id="AgregarServ">Agregar</button></li>
-                <li><button type="button" id="EditarServ">Editar</button></li>
-                <li><button type="button" id="EliminarServ">Eliminar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button type="button" id="AgregarServ">Agregar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button type="button" id="EditarServ">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button type="button" id="EliminarServ">Eliminar</button></li>
             </ul>
         </span>
         <span>
             <h2>Geleria</h2>
             <ul class="subMenu">
-                <li><button type="button" id="AgregarIMG">Agregar</button></li>
-                <li><button type="button" id="EditarIMG">Editar</button></li>
-                <li><button type="button" id="EliminarIMG">Eliminar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button type="button" id="AgregarIMG">Agregar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button type="button" id="EditarIMG">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button type="button" id="EliminarIMG">Eliminar</button></li>
             </ul>
         </span>
     </div>
@@ -77,7 +78,7 @@
                   </select>
             </span>
             <span id="Servicios">
-                <span class="InfoService">
+                <span id="InfoService">
                     <p>Nombre del Servicio: <input id="Sname" placeholder="Nombre Servicio" type="text"> </p>
                     <p>URL IMAGEN: <input id="Surl" placeholder="URL de la imagen" type="text"></p>
                     <img id="Simg" src="" alt="" width="190px" height="190px">
@@ -100,7 +101,7 @@
                   </select>
             </span>
             <span id="galleryInf">
-                <span class="photoInfo">
+                <span id="photoInfo">
                     <p>URL IMAGEN: <input id="URLphoto" placeholder="URL de la imagen" type="text"></p>
                     <img id="IMGGal" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
                 </span>
