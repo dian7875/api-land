@@ -16,8 +16,19 @@ const selectIDSERV = document.getElementById('IDService');
 const urlInputElement = document.getElementById('Surl');
 var serviceName = document.getElementById("Sname");
 var serviceDescription = document.getElementById("Sdesc");
-var serviceIcon = document.getElementById("Surl");
-var serviceId = document.getElementById("IDService");
+
+function lock(){
+  target = document.getElementById("InfoService");
+  target2 = document.getElementById("photoInfo");
+  target.style.zIndex="-99";
+  target2.style.zIndex="-99";
+}
+function unlock(){
+  target = document.getElementById("InfoService");
+  target2 = document.getElementById("photoInfo");
+  target.style.zIndex="1";
+  target2.style.zIndex="1";
+}
 
 function loadComboSID(){
   while (selectIDSERV.length > 1) {
@@ -54,7 +65,7 @@ document.getElementById("CreateService").addEventListener("click", function () {
 
   var NewserviceName = serviceName.value;
   var NewserviceDescription = serviceDescription.value;
-  var NewserviceIcon = serviceIcon.value;
+  var NewserviceIcon = urlInputElement.value;
 
   var newService = {
     name: NewserviceName,
@@ -85,10 +96,10 @@ document.getElementById("CreateService").addEventListener("click", function () {
 
 
 document.getElementById("EditService").addEventListener("click", function () {
-  var SerchserviceId = serviceId.value;
+  var SerchserviceId = selectIDSERV.value;
   var serviceNewName = serviceName.value;
   var serviceNewDescription = serviceDescription.value;
-  var serviceNewIcon = serviceIcon.value;
+  var serviceNewIcon = urlInputElement.value;
 
   var updatedService = {
     name: serviceNewName,
@@ -117,20 +128,20 @@ document.getElementById("EditService").addEventListener("click", function () {
 });
 
 document.getElementById("DeleteService").addEventListener("click", function () {
-  var SerchserviceId = serviceId.value;
+  var SerchserviceId = selectIDSERV.value;
 
   fetch(`/api/services/${SerchserviceId}`, {
     method: 'DELETE'
   })
-    .then(response => {
-      if (response.status === 204) {
-
-        var serviceElement = document.querySelector(`li[data-serviceid="${SerchserviceId}"]`);
-        if (serviceElement) {
-          serviceElement.remove();
-        }
-      }
-    })
+  .then(response => {
+    if (response.status === 200) {
+      console.log("EXITO");
+      //imagen de exito al eliminar
+      //cancel();
+    }else{
+      //evento de fallo img fallo al eliminar
+    }
+  })
     .catch(error => {
       console.error('Error:', error);
     });
@@ -164,7 +175,7 @@ function editSer() {
 function inicioVacio(){
   serviceName.value = "";
   serviceDescription.value ="";
-  serviceIcon.value = "";
+  urlInputElement.value = "";
   Simg.src = 'https://i.pinimg.com/originals/fa/a5/62/faa5625612ebb5d14e955fe0aa8a616d.png';
 }
 
@@ -190,12 +201,14 @@ EditS.addEventListener("click", function () {
   hiddenInf();
   hiddenImgs();
   loadComboSID();
+  unlock();
 })
 createS.addEventListener("click", function () {
   inicioVacio();
   createServ();
   hiddenInf();
   hiddenImgs();
+  unlock();
 })
 DeleteS.addEventListener("click", function () {
   inicioVacio();
@@ -203,6 +216,7 @@ DeleteS.addEventListener("click", function () {
   hiddenInf();
   hiddenImgs();
   loadComboSID();
+  lock();
 })
 Surl.addEventListener("input", function () {
   const nuevoSrc = Surl.value;
@@ -353,7 +367,6 @@ ListaGall.addEventListener('change', (event) => {
   fetch(`http://localhost:3000/api/Galery/${selectPhotoId}`)
     .then(response => response.json())
     .then(GaleryData => {
-      console.log(GaleryData)
       urlFoto.value = GaleryData.url;
       imgP.src= GaleryData.url;
     })
@@ -362,7 +375,7 @@ ListaGall.addEventListener('change', (event) => {
 
 //Galeria botones y texto
 var InfG = document.getElementById("galleryInf");
-let ID = document.getElementById("DeleteIMG");
+let IDELETE = document.getElementById("DeleteIMG");
 let IE = document.getElementById("EditIMG");
 let IC = document.getElementById("CreateIMG");
 
@@ -375,7 +388,7 @@ function hiddenImgs() {
   IDPhoto.style.visibility = "hidden";
   InfG.style.visibility = "hidden";
   IC.style.visibility = "hidden";
-  ID.style.visibility = "hidden";
+  IDELETE.style.visibility = "hidden";
   IE.style.visibility = "hidden";
 }
 function loadEmpy(){
@@ -387,7 +400,7 @@ function showImgEdit() {
   InfG.style.visibility = "visible";
   IE.style.visibility = "visible";
   IC.style.visibility = "hidden";
-  ID.style.visibility = "hidden";
+  IDELETE.style.visibility = "hidden";
   loadEmpy();
 }
 EdiImg.addEventListener("click", function () {
@@ -395,11 +408,12 @@ EdiImg.addEventListener("click", function () {
   hiddenInf();
   showImgEdit();
   loadComboOp();
+  unlock();
 });
 function showImgDele() {
   IDPhoto.style.visibility = "visible";
   InfG.style.visibility = "visible";
-  ID.style.visibility = "visible";
+  IDELETE.style.visibility = "visible";
   IE.style.visibility = "hidden";
   IC.style.visibility = "hidden";
   loadEmpy();
@@ -409,19 +423,42 @@ DelImg.addEventListener("click", function () {
   hiddenInf();
   showImgDele();
   loadComboOp();
+  lock();
 });
 function ShowImgAdd() {
   ListaGall.style.visibility = "hidden";
   InfG.style.visibility = "visible";
   IC.style.visibility = "visible";
   IE.style.visibility = "hidden";
-  ID.style.visibility = "hidden";
+  IDELETE.style.visibility = "hidden";
   loadEmpy();
 }
 AddImg.addEventListener("click", function () {
   hiddenServ();
   hiddenInf();
   ShowImgAdd();
+  unlock();
 });
+//PUT,PATCH,DELETE
+IDELETE.addEventListener("click", function () {
 
+  //confirmacion de elimnar
+  var SerchGallId = ListaGall.value;
 
+  fetch(`/api/Galery/${SerchGallId}`, {
+    method: 'DELETE'
+  })
+    .then(response => {
+      if (response.status === 200) {
+        console.log("EXITO");
+        //imagen de exito al eliminar
+        //cancel();
+      }else{
+        //evento de fallo img fallo al eliminar
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+});
+//Fin >_<
