@@ -65,7 +65,7 @@ document.getElementById("CreateService").addEventListener("click", function () {
 
   var NewserviceName = serviceName.value;
   var NewserviceDescription = serviceDescription.value;
-  var NewserviceIcon = serviceIcon.value;
+  var NewserviceIcon = urlInputElement.value;
 
   var newService = {
     name: NewserviceName,
@@ -99,7 +99,7 @@ document.getElementById("EditService").addEventListener("click", function () {
   var SerchserviceId = selectIDSERV.value;
   var serviceNewName = serviceName.value;
   var serviceNewDescription = serviceDescription.value;
-  var serviceNewIcon = serviceIcon.value;
+  var serviceNewIcon = urlInputElement.value;
 
   var updatedService = {
     name: serviceNewName,

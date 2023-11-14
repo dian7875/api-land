@@ -15,23 +15,23 @@
         <span>
             <h2>Informacion General</h2>
             <ul class="subMenu">
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button type="button" id="InfEdit">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button class="Boton" type="button" id="InfEdit">Editar</button></li>
             </ul>
         </span>
         <span>
             <h2>Servicios</h2>
             <ul class="subMenu">
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button type="button" id="AgregarServ">Agregar</button></li>
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button type="button" id="EditarServ">Editar</button></li>
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button type="button" id="EliminarServ">Eliminar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button class="Boton" type="button" id="AgregarServ">Agregar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button class="Boton"  type="button" id="EditarServ">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button class="Boton" type="button" id="EliminarServ">Eliminar</button></li>
             </ul>
         </span>
         <span>
             <h2>Geleria</h2>
             <ul class="subMenu">
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button type="button" id="AgregarIMG">Agregar</button></li>
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button type="button" id="EditarIMG">Editar</button></li>
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button type="button" id="EliminarIMG">Eliminar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button class="Boton" type="button" id="AgregarIMG">Agregar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button class="Boton" type="button" id="EditarIMG">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button class="Boton" type="button" id="EliminarIMG">Eliminar</button></li>
             </ul>
         </span>
     </div>
@@ -48,8 +48,8 @@
                     <div>
                         <p>Url Banner:<input id="BanIn" placeholder="URL de la imagen" type="text"></p>
                         <img id="LogoB" class="Im"
-                            src="" alt="" width="190px"
-                            height="190px">
+                            src="" alt="" width="320px"
+                            height="220px">
                     </div>
                 </div>
                 <div class="InfoED">
@@ -67,7 +67,7 @@
                 </div>
             </span>
             <div class="btn">
-                <button type="submit" id="Confirm">Confirmar</button>
+                <button type="submit" class="EDIT"  id="Confirm">Confirmar</button>
                 <button type="submit" class="cancelar">cancelar</button>
             </div>
         </span>
@@ -87,9 +87,9 @@
                     placeholder="Descripcion del Servicio"></textarea>
                 </span>
                 <div class="botonera">
-                    <button type="submit" id="CreateService">Agregar</button>
-                    <button type="submit" id="DeleteService">Eliminar</button>
-                    <button type="submit" id="EditService">Editar</button>
+                    <button type="submit" class="create" id="CreateService">Agregar</button>
+                    <button type="submit" class="delete" id="DeleteService">Eliminar</button>
+                    <button type="submit"  class="EDIT" id="EditService">Editar</button>
                     <button type="submit" id="Canc" class="cancelar">cancelar</button>
                 </div>
             </span>
@@ -106,10 +106,10 @@
                     <img id="IMGGal" src="./assets/RYCLOG.png" alt="" width="190px" height="190px">
                 </span>
                 <div class="botonera">
-                    <button type="submit" id="CreateIMG">Agregar</button>
-                    <button type="submit" id="DeleteIMG">Eliminar</button>
-                    <button type="submit" id="EditIMG">Editar</button>
-                    <button type="submit" id="Cance" class="cancelar">cancelar</button>
+                    <button type="submit" class="create" id="CreateIMG">Agregar</button>
+                    <button type="submit" class="delete" id="DeleteIMG">Eliminar</button>
+                    <button type="submit"  class="EDIT" id="EditIMG">Editar</button>
+                    <button type="submit" id="Can" class="cancelar">cancelar</button>
                 </div>
             </span>
         </span>
