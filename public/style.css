@@ -162,8 +162,9 @@ body {
     margin-left: 20px;
 }
 
+  
+.adverAgregar {
 
-  .adverAgregar {
     
     width: 300px; 
     background-color: #e6e4e4; 
@@ -191,5 +192,6 @@ body {
   
   button {
     margin: 0 10px;
+
   }
   
