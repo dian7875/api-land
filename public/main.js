@@ -96,7 +96,7 @@ document.getElementById("Aceptar").addEventListener("click",function(){
     advertencia.style.visibility = "hidden";
     cancel();
 })
-
+//finaliza
 document.getElementById("CreateService").addEventListener("click", function () {
 
   advertencia.style.visibility = "visible";
@@ -347,8 +347,78 @@ for (var i = 0; i < cancels.length; i++) {
 //segmento de imagenes
 //combobox y carga de elementos del combobox
 var ListaGall = document.getElementById("IDPhoto");
-var urlFoto = document.getElementById("URLphoto"); //Input
+var urlFoto = document.getElementById("URLphoto"); //Input ESTE ES EL QUE OCUPO
 var imgP = document.getElementById("IMGGal"); //IMAGEN
+
+document.getElementById("CreateIMG").addEventListener("click",function(){
+  var newUrlFoto = urlFoto.value;
+
+  var newGalery = {
+    url: newUrlFoto,
+    infoGeneralId:1
+  };
+
+  fetch('http://localhost:3000/api/galery', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newGalery)
+  })
+    .then(response => {
+      if (response.status === 201) {
+        alert('Galeria agregada con éxito');
+
+      } else {
+        alert('Hubo un error al agregar la galeria');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    advertencia.style.visibility = "hidden";
+    cancel();
+})
+
+//Metodo para actualizar la imagen ------------------------------------------------------------------
+
+ListaGall.addEventListener('change', (event) => {
+
+  const selectPhotoId = event.target.value;
+
+
+  document.getElementById("EditIMG").addEventListener("click",function(){
+    var newUrlFoto = urlFoto.value;
+  
+    var updateGalery = {
+      url: newUrlFoto,
+      infoGeneralId:1
+    };
+    
+    fetch(`http://localhost:3000/api/galery/${selectPhotoId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updateGalery)
+    })
+      .then(response => {
+        if (response.status === 200) {
+          alert('Galeria actualizada con éxito');
+  
+        } else {
+          alert('Hubo un error al actualizar la galeria');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+      advertencia.style.visibility = "hidden";
+      cancel();
+  })
+});
+
+
 
 function loadComboOp(){
   while (ListaGall.length > 1) {
