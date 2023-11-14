@@ -161,3 +161,33 @@ body {
     width: 80%;
     margin-left: 20px;
 }
+
+.adverAgregar {
+    
+    width: 300px; 
+    background-color: #e6e4e4; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+  border-radius: 3%;
+    border: 2px solid black;
+    z-index: 99999;
+    
+  }
+  
+  .contImg {
+    margin-bottom: 10px;
+  }
+  
+  .adverImg {
+    max-width: 30%;
+    height: auto;
+    
+  }
+  
+  button {
+    margin: 0 10px;
+  }

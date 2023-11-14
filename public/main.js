@@ -397,6 +397,11 @@ function ShowImgAdd() {
 
 }
 
+// advertencia
 
+var adverAgregarElement = document.getElementsByClassName("adverAgregar")[0];
+
+
+adverAgregarElement.style.display="none";
 
 
