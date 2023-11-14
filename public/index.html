@@ -8,6 +8,7 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3721/3721726.png" type="image/x-icon">
     <title>RYC pagina administrativa</title>
 </head>
+
 <body>
     <div class="adverAgregar">
         <div class="contImg">
@@ -15,46 +16,45 @@
         </div>
         <h2>Estas seguro de realizar los cambios?</h2>
         <div class="botonera">
-            <button id="Aceptar" class="create" type="submit">Aceptar</button> <!--aceptar de agregar service-->
-            <button class="cancelar" type="submit">Cancelar</button> <!-- cancelar de agregar service-->
-            <button id="AceptarEdiService" class="EDIT" type="submit">Editar</button> 
-            <button class="cancelar" type="submit">Cancelar</button> 
-            <button id="AceptarDeleteService" class="delete" type="submit">Eliminar</button> 
-            <button class="cancelar" type="submit">Cancelar</button> 
-
-            <button id="AceptarAgreImg" class="create" type="submit">Aceptar</button> <!--aceptar de agregar Imagen-->
-            <button class="cancelar" type="submit">Cancelar</button> <!-- cancelar de agregar Imagen-->
-            <button id="AceptarEdiImg" class="EDIT" type="submit">Editar</button> 
-            <button class="cancelar" type="submit">Cancelar</button> 
-            <button id="AceptarDeleteImg" class="delete" type="submit">Eliminar</button> 
-            <button class="cancelar" type="submit">Cancelar</button> 
-
-            <button id="AceptarEdiInfo" class="EDIT" type="submit">Editar</button> <!--aceptar de editar Informacion general-->
-            <button class="cancelar" type="submit">Cancelar</button> <!-- cancelar de editar Informacion General-->
-     </div>
+            <button id="Aceptar" class="create" type="submit">Aceptar</button>
+            <button id="AceptarAgreImg" class="create" type="submit">Aceptar</button>
+            <button id="AceptarDeleteImg" class="delete" type="submit">Eliminar</button>
+            <button id="AceptarDeleteService" class="delete" type="submit">Eliminar</button>
+            <button id="AceptarEdiService" class="EDIT" type="submit">Editar</button>
+            <button id="AceptarEdiImg" class="EDIT" type="submit">Editar</button>
+            <button id="AceptarEdiInfo" class="EDIT" type="submit">Editar</button>
+            <button id="cancelar" type="submit">Cancelar</button>
+        </div>
     </div>
     <div class="sidebar">
         <img id="Logo" src="./assets/RYCLOG.png" alt="">
         <span>
             <h2>Informacion General</h2>
             <ul class="subMenu">
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button class="Boton" type="button" id="InfEdit">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button
+                        class="Boton" type="button" id="InfEdit">Editar</button></li>
             </ul>
         </span>
         <span>
             <h2>Servicios</h2>
             <ul class="subMenu">
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button class="Boton" type="button" id="AgregarServ">Agregar</button></li>
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button class="Boton"  type="button" id="EditarServ">Editar</button></li>
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button class="Boton" type="button" id="EliminarServ">Eliminar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button
+                        class="Boton" type="button" id="AgregarServ">Agregar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button
+                        class="Boton" type="button" id="EditarServ">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button
+                        class="Boton" type="button" id="EliminarServ">Eliminar</button></li>
             </ul>
         </span>
         <span>
             <h2>Geleria</h2>
             <ul class="subMenu">
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button class="Boton" type="button" id="AgregarIMG">Agregar</button></li>
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button class="Boton" type="button" id="EditarIMG">Editar</button></li>
-                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button class="Boton" type="button" id="EliminarIMG">Eliminar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""><button
+                        class="Boton" type="button" id="AgregarIMG">Agregar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""><button
+                        class="Boton" type="button" id="EditarIMG">Editar</button></li>
+                <li><img width="40px" src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt=""><button
+                        class="Boton" type="button" id="EliminarIMG">Eliminar</button></li>
             </ul>
         </span>
     </div>
@@ -64,15 +64,11 @@
                 <div class="InIMG">
                     <div class="InfoED">
                         <p>Url Logo:<input id="LogoI" placeholder="URL de la imagen" type="text"></p>
-                        <img id="Logop" class="Im"
-                            src="" alt="" width="190px"
-                            height="190px">
+                        <img id="Logop" class="Im" src="" alt="" width="190px" height="190px">
                     </div>
                     <div>
                         <p>Url Banner:<input id="BanIn" placeholder="URL de la imagen" type="text"></p>
-                        <img id="LogoB" class="Im"
-                            src="" alt="" width="320px"
-                            height="220px">
+                        <img id="LogoB" class="Im" src="" alt="" width="320px" height="220px">
                     </div>
                 </div>
                 <div class="InfoED">
@@ -90,7 +86,7 @@
                 </div>
             </span>
             <div class="btn">
-                <button type="submit" class="EDIT"  id="Confirm">Confirmar</button>
+                <button type="submit" class="EDIT" id="Confirm">Confirmar</button>
                 <button type="submit" class="cancelar">cancelar</button>
             </div>
         </span>
@@ -98,7 +94,7 @@
             <span class="ComboService">
                 <select id="IDService" aria-label="Selecciona un servicio">
                     <option value="">Selecciona un servicio</option>
-                  </select>
+                </select>
             </span>
             <span id="Servicios">
                 <span id="InfoService">
@@ -107,12 +103,12 @@
                     <img id="Simg" src="" alt="" width="190px" height="190px">
                     <p>Descripcion del servicio</p>
                     <textarea name="ServiceDesc" id="Sdesc" cols="30" rows="10"
-                    placeholder="Descripcion del Servicio"></textarea>
+                        placeholder="Descripcion del Servicio"></textarea>
                 </span>
                 <div class="botonera">
                     <button type="submit" class="create" id="CreateService">Agregar</button>
                     <button type="submit" class="delete" id="DeleteService">Eliminar</button>
-                    <button type="submit"  class="EDIT" id="EditService">Editar</button>
+                    <button type="submit" class="EDIT" id="EditService">Editar</button>
                     <button type="submit" id="Canc" class="cancelar">cancelar</button>
                 </div>
             </span>
@@ -121,7 +117,7 @@
             <span class="ComboGalery">
                 <select id="IDPhoto" aria-label="Selecciona un ID de photo">
                     <option value="">Selecciona un ID de foto</option>
-                  </select>
+                </select>
             </span>
             <span id="galleryInf">
                 <span id="photoInfo">
@@ -131,7 +127,7 @@
                 <div class="botonera">
                     <button type="submit" class="create" id="CreateIMG">Agregar</button>
                     <button type="submit" class="delete" id="DeleteIMG">Eliminar</button>
-                    <button type="submit"  class="EDIT" id="EditIMG">Editar</button>
+                    <button type="submit" class="EDIT" id="EditIMG">Editar</button>
                     <button type="submit" id="Can" class="cancelar">cancelar</button>
                 </div>
             </span>
