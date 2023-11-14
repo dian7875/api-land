@@ -462,3 +462,10 @@ IDELETE.addEventListener("click", function () {
     });
 });
 //Fin >_<
+// advertencia
+
+var adverAgregarElement = document.getElementsByClassName("adverAgregar")[0];
+
+
+
+adverAgregarElement.style.display="none";
