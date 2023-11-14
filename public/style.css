@@ -243,7 +243,7 @@ ul :hover img {
 }
 .adverAgregar {
 
-    
+    visibility: hidden;
     width: 300px; 
     background-color: #e6e4e4; 
     position: absolute;

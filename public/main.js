@@ -10,6 +10,7 @@ let AddImg = document.getElementById("AgregarIMG");
 let DelImg = document.getElementById("EliminarIMG");
 let EdiImg = document.getElementById("EditarIMG");
 let EdiInf = document.getElementById("InfEdit");
+var advertencia = document.getElementsByClassName("adverAgregar")[0];
 
 //Servicios Funciones y variables
 const selectIDSERV = document.getElementById('IDService');
@@ -61,8 +62,8 @@ selectIDSERV.addEventListener('change', (event) => {
     }).catch(error => console.error(error));
 });
 
-document.getElementById("CreateService").addEventListener("click", function () {
 
+document.getElementById("Aceptar").addEventListener("click",function(){
   var NewserviceName = serviceName.value;
   var NewserviceDescription = serviceDescription.value;
   var NewserviceIcon = urlInputElement.value;
@@ -92,6 +93,14 @@ document.getElementById("CreateService").addEventListener("click", function () {
     .catch(error => {
       console.error('Error:', error);
     });
+    advertencia.style.visibility = "hidden";
+    cancel();
+})
+
+document.getElementById("CreateService").addEventListener("click", function () {
+
+  advertencia.style.visibility = "visible";
+  
 });
 
 
@@ -464,8 +473,5 @@ IDELETE.addEventListener("click", function () {
 //Fin >_<
 // advertencia
 
-var adverAgregarElement = document.getElementsByClassName("adverAgregar")[0];
 
 
-
-adverAgregarElement.style.display="none";
