@@ -107,6 +107,22 @@ Surl.addEventListener("input", function () {
   const nuevoSrc = Surl.value;
   Simg.src = nuevoSrc;
 });
+var confEDIMG = document.getElementById("AceptarEdiImg");
+var confDEIMG = document.getElementById("AceptarDeleteImg");
+var confADIMG = document.getElementById("AceptarAgreImg");
+var confEDINF = document.getElementById("AceptarEdiInfo");
+var confADSER = document.getElementById("Aceptar");
+var confDESER = document.getElementById("AceptarDeleteService");
+var confEDSER = document.getElementById("AceptarEdiService");
+function hiddenButton() {
+  confEDIMG.style.visibility = "hidden";
+  confDEIMG.style.visibility = "hidden";
+  confADIMG.style.visibility = "hidden";
+  confEDINF.style.visibility = "hidden";
+  confADSER.style.visibility = "hidden";
+  confDESER.style.visibility = "hidden";
+  confEDSER.style.visibility = "hidden";
+};
 /*Orden de las funcionalides
 mostrar campos de opcion
 mostrar advertencia
@@ -114,11 +130,9 @@ realizar accion
 */
 //edit(PATCH) service
 EditS.addEventListener("click", function () {
+  cancel();
   inicioVacio();
   loadComboSID();
-  hiddenInf();
-  hiddenImgs();
-  hiddenServ();
   ListSe.style.visibility = "visible";
   Service.style.visibility = "visible";
   SE.style.visibility = "visible";
@@ -127,8 +141,11 @@ EditS.addEventListener("click", function () {
 
 document.getElementById("EditService").addEventListener("click", function () {
   advertencia.style.visibility = "visible";
+  hiddenButton();
+  confEDSER.style.visibility = "visible";
 });
-document.getElementById("AceptarEdiService").addEventListener("", function () {
+
+confEDSER.addEventListener("click", function () {
   var SerchserviceId = selectIDSERV.value;
   var serviceNewName = serviceName.value;
   var serviceNewDescription = serviceDescription.value;
@@ -151,6 +168,12 @@ document.getElementById("AceptarEdiService").addEventListener("", function () {
     .then(response => {
       if (response.status === 200) {
         alert('Servicio actualizado con éxito');
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden"
+          inicioVacio();
+          loadComboSID();
+        }, 2000);
       } else {
         alert('Hubo un error al actualizar el servicio');
       }
@@ -162,11 +185,9 @@ document.getElementById("AceptarEdiService").addEventListener("", function () {
 
 //delete service
 DeleteS.addEventListener("click", function () {
+  cancel();
   inicioVacio();
-  hiddenInf();
-  hiddenImgs();
   loadComboSID();
-  hiddenServ();
   ListSe.style.visibility = "visible";
   Service.style.visibility = "visible";
   SD.style.visibility = "visible";
@@ -175,9 +196,11 @@ DeleteS.addEventListener("click", function () {
 
 document.getElementById("DeleteService").addEventListener("click", function () {
   advertencia.style.visibility = "visible";
+  hiddenButton();
+  confDESER.style.visibility = "visible";
 });
 
-document.getElementById("AceptarDeleteService").addEventListener("", function () {
+confDESER.addEventListener("click", function () {
   var SerchserviceId = selectIDSERV.value;
 
   fetch(`/api/services/${SerchserviceId}`, {
@@ -185,9 +208,13 @@ document.getElementById("AceptarDeleteService").addEventListener("", function ()
   })
     .then(response => {
       if (response.status === 200) {
-        console.log("EXITO");
-        //imagen de exito al eliminar
-        //cancel();
+        alert("EXITO");
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden"
+          inicioVacio();
+          loadComboSID();
+        }, 2000);
       } else {
         //evento de fallo img fallo al eliminar
       }
@@ -199,10 +226,8 @@ document.getElementById("AceptarDeleteService").addEventListener("", function ()
 
 //post service
 createS.addEventListener("click", function () {
+  cancel();
   inicioVacio();
-  hiddenInf();
-  hiddenImgs();
-  hiddenServ();
   Service.style.visibility = "visible";
   SC.style.visibility = "visible";
   unlock();
@@ -210,9 +235,10 @@ createS.addEventListener("click", function () {
 document.getElementById("CreateService").addEventListener("click", function () {
 
   advertencia.style.visibility = "visible";
-
+  hiddenButton();
+  confADSER.style.visibility = "visible";
 });
-document.getElementById("Aceptar").addEventListener("click", function () {
+confADSER.addEventListener("click", function () {
   var NewserviceName = serviceName.value;
   var NewserviceDescription = serviceDescription.value;
   var NewserviceIcon = urlInputElement.value;
@@ -234,7 +260,11 @@ document.getElementById("Aceptar").addEventListener("click", function () {
     .then(response => {
       if (response.status === 201) {
         alert('Servicio agregado con éxito');
-
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden";
+          inicioVacio();
+        }, 2000);
       } else {
         alert('Hubo un error al agregar el servicio');
       }
@@ -242,8 +272,6 @@ document.getElementById("Aceptar").addEventListener("click", function () {
     .catch(error => {
       console.error('Error:', error);
     });
-  advertencia.style.visibility = "hidden";
-  cancel();
 });
 
 //fin de services
@@ -255,6 +283,7 @@ function hiddenInf() {
 }
 
 EdiInf.addEventListener("click", function () {
+  cancel();
   hiddenServ();
   InfoGenDsi.style.visibility = "visible";
   hiddenImgs();
@@ -279,8 +308,12 @@ EdiInf.addEventListener("click", function () {
 
 document.getElementById("Confirm").addEventListener("click", function () {
   advertencia.style.visibility = "visible";
+  hiddenButton();
+  confEDINF.style.visibility = "visible";
 });
-document.getElementById("AceptarEdiInfo").addEventListener("click", function () {
+
+
+confEDINF.addEventListener("click", function () {
   var newLogo = Logo.value;
   var newBanner = Banner.value;
   var newCompanyName = CompanyName.value;
@@ -312,8 +345,10 @@ document.getElementById("AceptarEdiInfo").addEventListener("click", function () 
   })
     .then(response => {
       if (response.status === 200) {
-
-        alert('Actualización exitosa');
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden"
+        }, 2000);
       } else {
 
         alert('Hubo un error al actualizar');
@@ -337,6 +372,8 @@ function cancel() {
   hiddenServ();
   hiddenInf();
   hiddenImgs();
+  hiddenButton();
+  advertencia.style.visibility = "hidden"
 }
 for (var i = 0; i < cancels.length; i++) {
   cancels[i].addEventListener("click", function () {
@@ -407,12 +444,10 @@ urlFoto.addEventListener("input", function () {
   imgP.src = nuevoSrc;
 });
 //FIN
-var confEDIMG = document.getElementById("AceptarEdiImg");
+
 //Edit(PATCH)
 EdiImg.addEventListener("click", function () {
-  hiddenInf();
-  hiddenServ();
-  hiddenImgs();
+  cancel();
   IDPhoto.style.visibility = "visible";
   InfG.style.visibility = "visible";
   IE.style.visibility = "visible";
@@ -422,9 +457,11 @@ EdiImg.addEventListener("click", function () {
 });
 IE.addEventListener("click", function () {
   advertencia.style.visibility = "visible";
+  hiddenButton();
+  confEDIMG.style.visibility = "visible";
 });
 
-confEDIMG.addEventListener("", function () {
+confEDIMG.addEventListener("click", function () {
 
   var newUrlFoto = urlFoto.value;
   const selectPhotoId = ListaGall.value;
@@ -443,7 +480,12 @@ confEDIMG.addEventListener("", function () {
     .then(response => {
       if (response.status === 200) {
         alert('Galeria actualizada con éxito');
-
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden";
+          loadComboOp();
+          loadEmpy();
+        }, 2000);
       } else {
         alert('Hubo un error al actualizar la galeria');
       }
@@ -451,14 +493,10 @@ confEDIMG.addEventListener("", function () {
     .catch(error => {
       console.error('Error:', error);
     });
-  advertencia.style.visibility = "hidden";
-  cancel();
 });
 //DELETE
 DelImg.addEventListener("click", function () {
-  hiddenInf();
-  hiddenServ();
-  hiddenImgs();
+  cancel();
   IDPhoto.style.visibility = "visible";
   InfG.style.visibility = "visible";
   IDELETE.style.visibility = "visible";
@@ -467,13 +505,14 @@ DelImg.addEventListener("click", function () {
   lock();
 });
 
-var confDEIMG = document.getElementById("AceptarDeleteImg");
 
 IDELETE.addEventListener("click", function () {
   advertencia.style.visibility = "visible";
+  hiddenButton();
+  confDEIMG.style.visibility = "visible";
 });
 
-confDEIMG.addEventListener("", function () {
+confDEIMG.addEventListener("click", function () {
   var SerchGallId = ListaGall.value;
 
   fetch(`/api/Galery/${SerchGallId}`, {
@@ -481,7 +520,13 @@ confDEIMG.addEventListener("", function () {
   })
     .then(response => {
       if (response.status === 200) {
-        console.log("EXITO");
+        alert("EXITO");
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden";
+          loadComboOp();
+          loadEmpy();
+        }, 2000);
       } else {
         //evento de fallo img fallo al eliminar
       }
@@ -493,9 +538,7 @@ confDEIMG.addEventListener("", function () {
 
 //PUT
 AddImg.addEventListener("click", function () {
-  hiddenInf();
-  hiddenServ();
-  hiddenImgs();
+  cancel();
   InfG.style.visibility = "visible";
   IC.style.visibility = "visible";
   loadEmpy();
@@ -504,11 +547,12 @@ AddImg.addEventListener("click", function () {
 
 IC.addEventListener("click", function () {
   advertencia.style.visibility = "visible";
+  hiddenButton();
+  confADIMG.style.visibility = "visible";
 });
 
-var confADIMG = document.getElementById("AceptarAgreImg");
 
-confADIMG.addEventListener("", function () {
+confADIMG.addEventListener("click", function () {
   var newUrlFoto = urlFoto.value;
 
   var newGalery = {
@@ -526,7 +570,11 @@ confADIMG.addEventListener("", function () {
     .then(response => {
       if (response.status === 201) {
         alert('Galeria agregada con éxito');
-
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden";
+          loadEmpy();
+        }, 2000);
       } else {
         alert('Hubo un error al agregar la galeria');
       }
@@ -534,8 +582,6 @@ confADIMG.addEventListener("", function () {
     .catch(error => {
       console.error('Error:', error);
     });
-  advertencia.style.visibility = "hidden";
-  cancel();
 });
 //fin galery
 //advertencia
@@ -543,6 +589,7 @@ confADIMG.addEventListener("", function () {
 
 document.getElementById("cancelar").addEventListener("click", function () {
   advertencia.style.visibility = "hidden";
+  hiddenButton();
 });
 
 
