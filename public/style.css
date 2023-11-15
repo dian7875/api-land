@@ -183,6 +183,7 @@ li{
 }
 .Boton{
     background: linear-gradient(to right, #3498db 70%, #3498db 100%);
+    width: 70%;
     border: none;
     color: #fff;
     padding: 10px 20px;
@@ -250,8 +251,8 @@ ul :hover img {
     transform: scale(1.1);
 }
 .adverAgregar {
-
-    width: 300px; 
+    visibility: hidden;
+    width: 400px; 
     background-color: #e6e4e4; 
     position: absolute;
     top: 50%;
@@ -283,42 +284,28 @@ ul :hover img {
   #Aceptar{
     grid-column: 1/2;
     grid-row: 1/2;
-    width: 80%;
-    margin-left: 20px;
   }
   #AceptarAgreImg{
     grid-column: 1/2;
     grid-row: 1/2;
-    width: 80%;
-    margin-left: 20px;
   }
   #AceptarDeleteImg{
     grid-column: 1/2;
     grid-row: 1/2;
-    width: 80%;
-    margin-left: 20px;
   }
   #AceptarDeleteService{
     grid-column: 1/2;
     grid-row: 1/2;
-    width: 80%;
-    margin-left: 20px;
   }
   #AceptarEdiService{
     grid-column: 1/2;
     grid-row: 1/2;
-    width: 80%;
-    margin-left: 20px;
   }
   #AceptarEdiImg{
     grid-column: 1/2;
     grid-row: 1/2;
-    width: 80%;
-    margin-left: 20px;
   }
   #AceptarEdiInfo{
     grid-column: 1/2;
     grid-row: 1/2;
-    width: 80%;
-    margin-left: 20px;
   }
