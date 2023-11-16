@@ -122,7 +122,7 @@ function inicioVacio() {
   serviceName.value = "";
   serviceDescription.value = "";
   urlInputElement.value = "";
-  Simg.src = 'https://i.pinimg.com/originals/fa/a5/62/faa5625612ebb5d14e955fe0aa8a616d.png';
+  Simg.src = 'https://cdn.discordapp.com/attachments/1150635259260584091/1174808404540268604/RYCLOG.png?ex=6568f096&is=65567b96&hm=c74ca017779e3421ad420b857fdd88611fc522ce6450adb178144bc4f9b8515b&';
 };
 function hiddenServ() {
   Service.style.visibility = "hidden";
@@ -194,7 +194,7 @@ confEDSER.addEventListener("click", function () {
     body: JSON.stringify(updatedService)
   })
     .then(response => {
-      if (response.status === 2000) {
+      if (response.status === 200) {
         loadExito();
         setTimeout(() => {
           hiddenButton();
@@ -241,7 +241,7 @@ confDESER.addEventListener("click", function () {
     method: 'DELETE'
   })
     .then(response => {
-      if (response.status === 2000) {
+      if (response.status === 200) {
         loadExito();
         setTimeout(() => {
           hiddenButton();
@@ -298,7 +298,7 @@ confADSER.addEventListener("click", function () {
     body: JSON.stringify(newService)
   })
     .then(response => {
-      if (response.status === 201) {
+      if (response.status === 200) {
         loadExito();
         setTimeout(() => {
           hiddenButton();
@@ -488,7 +488,7 @@ function hiddenImgs() {
 };
 function loadEmpy() {
   urlFoto.value = "";
-  imgP.src = "https://i.pinimg.com/originals/fa/a5/62/faa5625612ebb5d14e955fe0aa8a616d.png";
+  imgP.src = "https://cdn.discordapp.com/attachments/1150635259260584091/1174808404540268604/RYCLOG.png?ex=6568f096&is=65567b96&hm=c74ca017779e3421ad420b857fdd88611fc522ce6450adb178144bc4f9b8515b&";
 };
 urlFoto.addEventListener("input", function () {
   const nuevoSrc = urlFoto.value;
