@@ -27,7 +27,7 @@ CREATE TABLE `galery` (
   PRIMARY KEY (`id`),
   KEY `FK_5ad29b8a50abc44f20e4a2cdde1` (`infoGeneralId`),
   CONSTRAINT `FK_5ad29b8a50abc44f20e4a2cdde1` FOREIGN KEY (`infoGeneralId`) REFERENCES `infogeneral` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `galery` */
 
@@ -76,7 +76,7 @@ CREATE TABLE `services` (
   PRIMARY KEY (`id`),
   KEY `FK_28e5812baaff4b4d9ce1a8033bc` (`infoGeneralId`),
   CONSTRAINT `FK_28e5812baaff4b4d9ce1a8033bc` FOREIGN KEY (`infoGeneralId`) REFERENCES `infogeneral` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `services` */
 
