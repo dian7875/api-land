@@ -42,6 +42,7 @@ body {
 }
 
 .InIMG{
+    width: 75%;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     margin-left: 16px;
     margin-top: 16px;
@@ -49,6 +50,7 @@ body {
     background-color: white;
     border-radius: 8px;
 }
+
 .InfoED {
     display: flex;
     flex-direction: column;
@@ -86,18 +88,15 @@ body {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius:10px;
     height: 200%;
-    padding: 25px;
-    background-color: #a6ead5;
-   
-   
-   
-
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #a5f2fc;
 }
 
 #ActionInfo {
     visibility: hidden;
     position: absolute;
-    top: 15px;
+    top: 150px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -106,7 +105,7 @@ body {
     margin-left: 5px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     padding-bottom: 10px;
-    left: 40px; 
+    left: 150px; 
 }
 
 #DescC{
@@ -149,9 +148,9 @@ width: 100%;
 
 #Servicios{
     visibility: hidden;
-    width: 50%;
+    width: 40%;
     position: absolute;
-    top: 50px;
+    top: 120px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -161,14 +160,14 @@ width: 100%;
 
 .ComboService {
     position: absolute;
-    top: 20px;
+    top: 70px;
     visibility: hidden;
 }
 
 .ComboGalery {
     visibility: hidden;
     position: absolute;
-    top: 20px;
+    top: 70px;
 }
 
 #GalleryAction {
