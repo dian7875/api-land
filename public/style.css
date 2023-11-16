@@ -8,9 +8,9 @@ body {
 
 .sidebar {
     padding-left: 1%;
-    background: linear-gradient(to right, #24a8dce1, #ffffff);
-   
-    width: 20%;
+    background: #42a6b3;
+   color: white;
+    width: 15%;
     height: 125%;
     position: absolute;
 }
@@ -83,6 +83,7 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-left: 10%;
+    
 
 }
 #InfoService{
@@ -95,7 +96,7 @@ body {
     border-radius:10px;
     height: 200%;
     padding: 25px;
-    background-color: #a5f2fc;
+    background-color: #a6ead5;
    
    
    
@@ -109,11 +110,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 60px;
-    background-color: #a5f2fc;
+    background-color: #a6ead5;
     border-radius:10px;
     margin-left: 5px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     padding-bottom: 10px;
+    left: 40px;
   
    
 }
@@ -211,12 +213,14 @@ body {
 ul{
     list-style: none;
     padding-left: 15px;
+    
 }
 li{
     padding: 5%;
     display: flex;
     align-items: center;
     gap: 15px;
+    
 }
 
 .btn {
@@ -372,3 +376,10 @@ ul :hover img {
     grid-row: 1/2;
   }
 
+#photoInfo{
+    background-color: #a6ead5;
+    border-radius:10px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    padding-bottom: 10px;
+    padding: 30px;
+}
