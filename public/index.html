@@ -10,9 +10,11 @@
 </head>
 
 <body>
+    
     <div class="adverAgregar">
         <div class="contImg">
             <img class="adverImg" src="https://cdn-icons-png.flaticon.com/512/552/552871.png" alt="">
+            
         </div>
         <h2>Estas seguro de realizar los cambios?</h2>
         <div class="botonera">
@@ -28,15 +30,16 @@
     </div>
     <div id="side" class="sidebar">
         <img id="Logo" src="./assets/RYCLOG.png" alt="">
+        
         <span>
-            <h2>Informacion General</h2>
+            <h4>Informacion General</h4>
             <ul class="subMenu">
                 <li><button class="Boton" type="button" id="InfEdit"><img width="30px"
                             src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt=""> Editar</button></li>
             </ul>
         </span>
         <span>
-            <h2>Servicios</h2>
+            <h4>Servicios</h4>
             <ul class="subMenu">
                 <li><button class="Boton" type="button" id="AgregarServ"> <img width="30px"
                             src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""> Agregar</button></li>
@@ -47,7 +50,7 @@
             </ul>
         </span>
         <span>
-            <h2>Geleria</h2>
+            <h4>Galeria</h4>
             <ul class="subMenu">
                 <li><button class="Boton" type="button" id="AgregarIMG"><img width="30px"
                             src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt=""> Agregar</button></li>
@@ -62,11 +65,11 @@
         <span id="ActionInfo">
             <span id="Informacion">
                 <div class="InIMG">
-                    <div class="InfoED">
+                    <div class="">
                         <p>Url Logo:<input id="LogoI" placeholder="URL de la imagen" type="text"></p>
                         <img id="Logop" class="Im" src="" alt="" width="190px" height="190px">
                     </div>
-                    <div>
+                    <div id="Banner">
                         <p>Url Banner:<input id="BanIn" placeholder="URL de la imagen" type="text"></p>
                         <img id="LogoB" class="Im" src="" alt="" width="320px" height="220px">
                     </div>
@@ -78,7 +81,7 @@
                     <p class="P">Historia:</p>
                     <textarea name="" id="HistC" cols="30" rows="10" placeholder="Historia"></textarea>
                 </div>
-                <div class="InfoED">
+                <div class="InfoEE">
                     <p>Telefono: <input id="TelC" type="text" placeholder="Tel1"></p>
                     <p>Telefono 2: <input id="Tel2C" type="text" placeholder="Tel2"></p>
                     <p>Direccion: <input id="DirC" type="text" placeholder="Direccion"></p>
@@ -87,7 +90,7 @@
             </span>
             <div class="btn">
                 <button type="submit" class="EDIT" id="Confirm">Confirmar</button>
-                <button type="submit" class="cancelar">cancelar</button>
+                <button type="submit" class="cancelar">Cancelar</button>
             </div>
         </span>
         <span id="ServiceAction">
@@ -104,13 +107,14 @@
                     <p>Descripcion del servicio</p>
                     <textarea name="ServiceDesc" id="Sdesc" cols="30" rows="10"
                         placeholder="Descripcion del Servicio"></textarea>
+                        <div class="botonera">
+                            <button type="submit" class="create" id="CreateService">Agregar</button>
+                            <button type="submit" class="delete" id="DeleteService">Eliminar</button>
+                            <button type="submit" class="EDIT" id="EditService">Editar</button>
+                            <button type="submit" id="Canc" class="cancelar">Cancelar</button>
+                        </div>
                 </span>
-                <div class="botonera">
-                    <button type="submit" class="create" id="CreateService">Agregar</button>
-                    <button type="submit" class="delete" id="DeleteService">Eliminar</button>
-                    <button type="submit" class="EDIT" id="EditService">Editar</button>
-                    <button type="submit" id="Canc" class="cancelar">cancelar</button>
-                </div>
+                
             </span>
         </span>
         <span id="GalleryAction">
@@ -128,7 +132,7 @@
                     <button type="submit" class="create" id="CreateIMG">Agregar</button>
                     <button type="submit" class="delete" id="DeleteIMG">Eliminar</button>
                     <button type="submit" class="EDIT" id="EditIMG">Editar</button>
-                    <button type="submit" id="Can" class="cancelar">cancelar</button>
+                    <button type="submit" id="Can" class="cancelar">Cancelar</button>
                 </div>
             </span>
         </span>
