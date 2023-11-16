@@ -1,5 +1,6 @@
 <p align="center">En la carpeta ScripBDConDatos se encuentra un scrip con el cual se pueden cargar los datos iniciales de la Empreza asi como crear la bd con el nombre utilizado en la api. se recomienda la importacion de la bd como primer paso</p>
-
+<h2>una ves levantado el API desde http://localhost:3000/ podemos acceder a la pagina Administrativa
+</h2>
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
