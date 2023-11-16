@@ -2,6 +2,34 @@ window.addEventListener("load", function () {
   console.log("'Todos los recursos terminaron de cargar!");
 });
 
+
+var men = document.getElementById("Mensaje");//text
+var opStatus = document.getElementById("ImgSta");//imagen
+var opdiv = document.getElementById("Final");//span
+var obje = document.getElementById("ExitoError");
+function loadExito(){
+men.innerText="Operacion Realizada Con Exito";
+opStatus.src="https://cdn-icons-png.flaticon.com/128/1828/1828640.png";
+men.style.visibility="visible";
+opStatus.style.visibility="visible";
+opdiv.style.visibility="visible";
+opdiv.style.visibility="visible";
+obje.style.visibility="visible";
+};
+function loadError(){
+  men.innerText="ERROR al realizar la operacion porfavor revisa los datos";
+  opStatus.src="https://cdn-icons-png.flaticon.com/128/1810/1810747.png";
+  men.style.visibility="visible";
+  opStatus.style.visibility="visible";
+  opdiv.style.visibility="visible";
+};
+
+function hidddenStatus(){
+  men.style.visibility="hidden";
+  opStatus.style.visibility="hidden";
+  opdiv.style.visibility="hidden";
+};
+
 //Botones sidebar
 let EditS = document.getElementById("EditarServ");
 let createS = document.getElementById("AgregarServ");
@@ -166,16 +194,22 @@ confEDSER.addEventListener("click", function () {
     body: JSON.stringify(updatedService)
   })
     .then(response => {
-      if (response.status === 200) {
-        alert('Servicio actualizado con éxito');
+      if (response.status === 2000) {
+        loadExito();
         setTimeout(() => {
           hiddenButton();
           advertencia.style.visibility = "hidden"
           inicioVacio();
           loadComboSID();
+          hidddenStatus();
         }, 2000);
       } else {
-        alert('Hubo un error al actualizar el servicio');
+        loadError();
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden"
+          hidddenStatus();
+        }, 2000);
       }
     })
     .catch(error => {
@@ -207,16 +241,22 @@ confDESER.addEventListener("click", function () {
     method: 'DELETE'
   })
     .then(response => {
-      if (response.status === 200) {
-        alert("EXITO");
+      if (response.status === 2000) {
+        loadExito();
         setTimeout(() => {
           hiddenButton();
           advertencia.style.visibility = "hidden"
           inicioVacio();
           loadComboSID();
+          hidddenStatus();
         }, 2000);
       } else {
-        //evento de fallo img fallo al eliminar
+        loadError();
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden"
+          hidddenStatus();
+        }, 2000);
       }
     })
     .catch(error => {
@@ -259,14 +299,20 @@ confADSER.addEventListener("click", function () {
   })
     .then(response => {
       if (response.status === 201) {
-        alert('Servicio agregado con éxito');
+        loadExito();
         setTimeout(() => {
           hiddenButton();
-          advertencia.style.visibility = "hidden";
+          advertencia.style.visibility = "hidden"
           inicioVacio();
+          hidddenStatus();
         }, 2000);
       } else {
-        alert('Hubo un error al agregar el servicio');
+        loadError();
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden"
+          hidddenStatus();
+        }, 2000);
       }
     })
     .catch(error => {
@@ -345,13 +391,18 @@ confEDINF.addEventListener("click", function () {
   })
     .then(response => {
       if (response.status === 200) {
+        loadExito();
         setTimeout(() => {
           hiddenButton();
-          advertencia.style.visibility = "hidden"
+          advertencia.style.visibility = "hidden";
+         hidddenStatus();
         }, 2000);
       } else {
-
-        alert('Hubo un error al actualizar');
+        loadError();
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden";
+        }, 2000);
       }
     })
     .catch(error => {
@@ -479,15 +530,21 @@ confEDIMG.addEventListener("click", function () {
   })
     .then(response => {
       if (response.status === 200) {
-        alert('Galeria actualizada con éxito');
+       loadExito();
         setTimeout(() => {
           hiddenButton();
           advertencia.style.visibility = "hidden";
           loadComboOp();
           loadEmpy();
+          hidddenStatus();
         }, 2000);
       } else {
-        alert('Hubo un error al actualizar la galeria');
+        loadError();
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden";
+          hidddenStatus();
+        }, 2000);
       }
     })
     .catch(error => {
@@ -520,16 +577,23 @@ confDEIMG.addEventListener("click", function () {
   })
     .then(response => {
       if (response.status === 200) {
-        alert("EXITO");
+        loadExito();
         setTimeout(() => {
           hiddenButton();
           advertencia.style.visibility = "hidden";
           loadComboOp();
           loadEmpy();
+          hidddenStatus();
         }, 2000);
       } else {
-        //evento de fallo img fallo al eliminar
+        loadError();
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden";
+          hidddenStatus();
+        }, 2000);
       }
+      
     })
     .catch(error => {
       console.error('Error:', error);
@@ -569,14 +633,20 @@ confADIMG.addEventListener("click", function () {
   })
     .then(response => {
       if (response.status === 201) {
-        alert('Galeria agregada con éxito');
+        loadExito();
         setTimeout(() => {
           hiddenButton();
           advertencia.style.visibility = "hidden";
           loadEmpy();
+          hidddenStatus();
         }, 2000);
       } else {
-        alert('Hubo un error al agregar la galeria');
+        loadError();
+        setTimeout(() => {
+          hiddenButton();
+          advertencia.style.visibility = "hidden";
+          hidddenStatus();
+        }, 2000);
       }
     })
     .catch(error => {
@@ -591,6 +661,5 @@ document.getElementById("cancelar").addEventListener("click", function () {
   advertencia.style.visibility = "hidden";
   hiddenButton();
 });
-
 
 //Fin >_<

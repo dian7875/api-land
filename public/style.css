@@ -11,7 +11,7 @@ body {
     background: #42a6b3;
    color: white;
     width: 15%;
-    height: 125%;
+    height: 100%;
     position: absolute;
 }
 
@@ -72,19 +72,10 @@ body {
     background-color: white;
    border-radius: 8px;
 }
-#LogoB{
-    width: 100%;
-}
-#Logop{
-    width: 100%;
-}
 #Banner{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 10%;
-    
-
 }
 #InfoService{
     width: 100%;
@@ -106,25 +97,31 @@ body {
 #ActionInfo {
     visibility: hidden;
     position: absolute;
-    top: 25px;
+    top: 15px;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 30px;
     background-color: #a6ead5;
     border-radius:10px;
     margin-left: 5px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     padding-bottom: 10px;
-    left: 40px;
-  
-   
+    left: 40px; 
+}
+
+#DescC{
+ width: 100%;
+}
+
+#HistC{
+width: 100%;
 }
 
 #CreateService {
     grid-column: 1/2;
     grid-row: 1/2;
     width: 80%;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 #DeleteService {
@@ -152,7 +149,7 @@ body {
 
 #Servicios{
     visibility: hidden;
-    width: 40%;
+    width: 50%;
     position: absolute;
     top: 50px;
     display: flex;
@@ -216,11 +213,8 @@ ul{
     
 }
 li{
-    padding: 5%;
     display: flex;
     align-items: center;
-    gap: 15px;
-    
 }
 
 .btn {
@@ -383,3 +377,19 @@ ul :hover img {
     padding-bottom: 10px;
     padding: 30px;
 }
+#Final{
+   z-index: "999";
+   visibility: hidden;
+    margin-top: 32%;
+    width: 420px; 
+    background-color: #e6e4e4; 
+    position: absolute;
+    left: 50%;
+    bottom: 7%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+    border-radius: 3%;
+    border: 2px solid black;
+    z-index: 99999;
+  }
